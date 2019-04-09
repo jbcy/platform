@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<title>JBCY</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2{font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+p {line-height: 2}
+.bgimg {
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+.bgimg {background-image: url("./images/sheffield.jpg")}
+</style>
+<body>
+
+<!-- Header / Home-->
+<header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-text-white w3-center">
+    <h1 class="w3-jumbo">JBCY Platform</h1>
+    <h2>Easy student life</h2>
+  </div>
+</header>
+
+<!-- Navbar (sticky bottom) -->
+<div class="w3-bottom w3-hide-small">
+  <div class="w3-bar w3-white w3-center w3-padding w3-opacity-min w3-hover-opacity-off">
+    <a href="#home" style="width:25%" class="w3-bar-item w3-button">Home</a>
+    <a href="#description" style="width:25%" class="w3-bar-item w3-button">Description</a>
+    <a href="#login" style="width:25%" class="w3-bar-item w3-button">Log in</a>
+    <a href="#join" style="width:25%" class="w3-bar-item w3-button w3-hover-black">Join</a>
+  </div>
+</div>
+
+<!-- About description -->
+<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min" id="description">
+  <div class="w3-content">
+    <h1 class="w3-center w3-text-grey"><b>JBCY</b></h1>
+    
+    <p><i>You all know us. And we all know you. We are getting married lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat.</i>
+    </p><br>
+  
+  </div>
+</div>
+
+
+<!-- Login information -->
+<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min w3-center" id="login">
+  <div class="w3-content">
+    <h1 class="w3-text-grey"><b>Welcome back</b></h1>
+    <p>Claudia, here we need the form for the login data</p>
+  </div>
+</div>
+
+<!-- Registration section -->
+<div class="w3-container w3-padding-64 w3-pale-red w3-center w3-wide" id="join">
+  <h1>JOIN US TODAY!</h1>
+
+  <p class="w3-xlarge">
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-round w3-red w3-opacity w3-hover-opacity-off" style="padding:8px 60px">JOIN</button>
+  </p>
+</div>
+
+<!-- Registration modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px">
+    <div class="w3-container w3-white w3-center">
+      <h1 class="w3-wide">Registration</h1>
+      <p>Here we need the form for registration</p>
+      <form>
+        <input class="w3-input w3-border" type="text" placeholder="have a nice day" name="name">
+      </form>
+      <p><i>Sincerely, Jingbo</i></p>
+      <div class="w3-row">
+        <div class="w3-half">
+          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-green">Join</button>
+        </div>
+        <div class="w3-half">
+          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-red">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by team 13</a></p>
+</footer>
+<div class="w3-hide-small" style="margin-bottom:32px"></div>
+
+</body>
+</html>
