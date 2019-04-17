@@ -1,5 +1,5 @@
 package dao;
 
-public class PeanutBankDao {
+public interface PeanutBankDao {
 
 }
