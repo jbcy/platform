@@ -1,7 +1,11 @@
 package utils;
 
 import java.sql.*;
-
+/**
+ * Use to connect the local database
+ * @author Jingbo Lin
+ *
+ */
 public class JdbcUtils {
 	private static Connection con = null;
 	// Change DB_URL to your machine's port (mostly change from 3307 to 3306)

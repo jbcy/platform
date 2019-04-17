@@ -8,6 +8,12 @@
 > * **servlet** is a package for controlling the behaviour of web (a bit like control in MVC architecture)
 > * **utils** is a package for common method (I change its name from "common" to "utils")
 
+***New file***
+> * **.sql** file contains jbcy database which could be import to your local mysql database.
+> * **jbcy** contains three tables: 'user', 'peanut', 'records'.
+> * **user** contains: 'id', 'name', 'email', 'password', 'role'.
+> * **peanut** contains: 'id', 'user_id', 'points'.
+> * **records** contains: 'id', 'user_id', 'statement'.
 ***If you have any question or get confused, please text me in whatsapp***
 
 *Have a nice day, Claudia*   
