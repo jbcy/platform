@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * User Entity
+ * @author Jingbo Lin
+ *
+ */
 public class User {
 	private String id;
 	private String name;
