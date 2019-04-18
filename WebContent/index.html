@@ -4,25 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-body,h1,h2{font-family: "Raleway", sans-serif}
-body, html {height: 100%}
-p {line-height: 2}
-.bgimg {
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
-}
-.bgimg {background-image: url("./images/sheffield.jpg")}
-</style>
+<link rel="stylesheet" href="./style/home.css">
 <body>
 
 <!-- Header / Home-->
-<header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="home">
+<header class="w3-display-container w3-wide bgimg " id="home">
   <div class="w3-display-middle w3-text-white w3-center">
-    <h1 class="w3-jumbo">JBCY Platform</h1>
-    <h2>Easy student life</h2>
+    <h1 class="w3-jumbo"><b>JBCY Platform</b></h1>
+    <h2><b>Easy student life</b></h2>
   </div>
 </header>
 
@@ -37,13 +28,11 @@ p {line-height: 2}
 </div>
 
 <!-- About description -->
-<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min" id="description">
+<div class="w3-container w3-padding-64 w3-light-gray w3-grayscale-min" id="description">
   <div class="w3-content">
     <h1 class="w3-center w3-text-grey"><b>JBCY</b></h1>
     
-    <p><i>You all know us. And we all know you. We are getting married lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.</i>
+    <p><i>WHAT ARE WE GONNA PUT IN HERE ??.</i>
     </p><br>
   
   </div>
@@ -51,32 +40,48 @@ p {line-height: 2}
 
 
 <!-- Login information -->
-<div class="w3-container w3-padding-64 w3-pale-red w3-grayscale-min w3-center" id="login">
+<div class="w3-container w3-padding-64 w3-light-gray w3-grayscale-min  " id="login">
   <div class="w3-content">
-    <h1 class="w3-text-grey"><b>Welcome back</b></h1>
-    <p>Claudia, here we need the form for the login data</p>
+    <h1 class="w3-text-grey w3-center"><b>Welcome back!</b></h1>
+    <form class="w3-container">
+
+	<label>Email</label>
+	<input class="w3-input" type="email">
+	
+	<label>Password</label>
+	<input class="w3-input" type="password">
+	<div class="w3-center w3-padding-16">
+	<button class="w3-button w3-black w3-center">Log in</button>
+	</div>
+	
+	</form>
   </div>
 </div>
 
 <!-- Registration section -->
-<div class="w3-container w3-padding-64 w3-pale-red w3-center w3-wide" id="join">
+<div class="w3-container w3-padding-64 w3-metro-dark-green w3-center w3-wide" id="join">
   <h1>JOIN US TODAY!</h1>
 
   <p class="w3-xlarge">
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-round w3-red w3-opacity w3-hover-opacity-off" style="padding:8px 60px">JOIN</button>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-round w3-black " style="padding:8px 60px">JOIN</button>
   </p>
 </div>
 
 <!-- Registration modal -->
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px">
-    <div class="w3-container w3-white w3-center">
-      <h1 class="w3-wide">Registration</h1>
-      <p>Here we need the form for registration</p>
-      <form>
-        <input class="w3-input w3-border" type="text" placeholder="have a nice day" name="name">
+    <div class="w3-container w3-white ">
+      <h1 class="w3-wide w3-center">Registration</h1>
+      <form class="w3-padding-16">
+      	<label>Name</label>
+		<input class="w3-input" type="text">
+		<label>Email</label>
+		<input class="w3-input" type="email">
+		<label>Password</label>
+		<input class="w3-input" type="password">
+     	<label>Repeat Password</label>
+		<input class="w3-input" type="password">
       </form>
-      <p><i>Sincerely, Jingbo</i></p>
       <div class="w3-row">
         <div class="w3-half">
           <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-green">Join</button>
@@ -90,8 +95,8 @@ p {line-height: 2}
 </div>
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by team 13</a></p>
+<footer class="w3-center w3-black w3-padding-48">
+  <p>Powered by team 13</p>
 </footer>
 <div class="w3-hide-small" style="margin-bottom:32px"></div>
 
