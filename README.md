@@ -14,6 +14,8 @@
 > * **user** contains: 'id', 'name', 'email', 'password', 'role'.
 > * **peanut** contains: 'id', 'user_id', 'points'.
 > * **records** contains: 'id', 'user_id', 'statement'.
+
+
 ***If you have any question or get confused, please text me in whatsapp***
 
 *Have a nice day, Claudia*   
