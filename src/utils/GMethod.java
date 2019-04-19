@@ -17,4 +17,6 @@ public class GMethod {
 	public static String makeID(){
 		return UUID.randomUUID().toString();
 	}
+	
+	
 }

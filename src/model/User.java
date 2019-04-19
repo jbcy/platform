@@ -12,6 +12,10 @@ public class User {
 	private int role = 0;
 	
 	
+	public User() {
+		super();
+		
+	}
 	public User(String id, String name, String email, String password) {
 		super();
 		this.id = id;
