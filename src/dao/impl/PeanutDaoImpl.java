@@ -20,7 +20,7 @@ public class PeanutDaoImpl implements PeanutDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			String sql = "INSERT INTO peanut (id, user_id, points) VALUES ('" 
+			String sql = "INSERT INTO peanuts (id, user_id, points) VALUES ('" 
 					+ peanut.getId() + "','"
 					+ peanut.getUserId() + "', "
 					+ peanut.getPoints() + ")";
@@ -47,7 +47,7 @@ public class PeanutDaoImpl implements PeanutDao {
 		Peanut peanut = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM peanut WHERE user_id = '" + userId +"'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM peanuts WHERE user_id = '" + userId +"'");
 			while(rs.next()) {
 				peanut = new Peanut(rs.getString(1), rs.getString(2), rs.getInt(3));
 			}
@@ -73,7 +73,7 @@ public class PeanutDaoImpl implements PeanutDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			int result = statement.executeUpdate("UPDATE peanut SET points = " 
+			int result = statement.executeUpdate("UPDATE peanuts SET points = " 
 			+ peanut.getPoints() + " WHERE user_id = '" 
 					+ peanut.getUserId() + "'");
 		} catch (SQLException e) {
