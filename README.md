@@ -11,12 +11,11 @@
 ***New file***
 > * **.sql** file contains jbcy database which could be import to your local mysql database.
 > * **jbcy** contains three tables: 'user', 'peanut', 'records'.
-> * **user** contains: 'id', 'name', 'email', 'password', 'role'.
-> * **peanut** contains: 'id', 'user_id', 'points'.
+> * **users** contains: 'id', 'name', 'email', 'password', 'role'.
+> * **peanuts** contains: 'id', 'user_id', 'points'.
 > * **records** contains: 'id', 'user_id', 'statement'.
-
+> * **apps** contains: 'id', 'name', 'users'.
+> * **users_apps** contains: 'id', 'user_id', 'app_id', 'join_date'.
 
 ***If you have any question or get confused, please text me in whatsapp***
 
-*Have a nice day, Claudia*   
-*Best, Jingbo*
