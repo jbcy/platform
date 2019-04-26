@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * Peanut bank entity
+ * @author Jingbo Lin
+ *
+ */
 public class Peanut {
 	
 	private String id;

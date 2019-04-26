@@ -10,6 +10,7 @@ import utils.JdbcUtils;
 
 
 /**
+ * Manipulation of peanut table
  * @author Jingbo Lin
  *
  */

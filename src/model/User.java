@@ -1,10 +1,14 @@
 package model;
+
+import java.io.Serializable;
+
 /**
- * User Entity
+ * User entity
  * @author Jingbo Lin
  *
  */
-public class User {
+public class User implements Serializable{
+
 	private String id;
 	private String name;
 	private String email;
