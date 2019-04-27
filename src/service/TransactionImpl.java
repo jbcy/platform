@@ -2,6 +2,7 @@
 package service;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.AppDao;
@@ -61,6 +62,11 @@ public class TransactionImpl implements Transaction {
 	public App findAppByName(String name) {
 		return appDao.findByName(name);
 	}
+	
+	@Override
+	public App findAppById(String id) {
+		return appDao.findById(id);
+	}
 
 	@Override
 	public List<App> findAllApp() {
@@ -79,7 +85,11 @@ public class TransactionImpl implements Transaction {
 
 	@Override
 	public List<App> findUserApps(String userId) {
-		return userAppDao.findByUser(userId);
+		List<App> list = userAppDao.findByUser(userId);
+		for (int i = 0; i < list.size(); i++) {
+			list.set(i, findAppById(list.get(i).getId()));
+		}	
+		return list;
 	}
 
 	@Override
@@ -106,6 +116,24 @@ public class TransactionImpl implements Transaction {
 		
 		
 	}
+
+	
+	
+	public List<App> remove(List<App> all, List<App> joined) {
+		List<App> temp = new ArrayList<>();
+		temp.addAll(all);
+		for (int i = 0; i < joined.size(); ++i) {
+			for (int j = 0; j < temp.size(); ++j) {
+				if (temp.get(j).getId().equals(joined.get(i).getId())) {
+					temp.remove(j);
+					break;
+				}
+			}
+		}
+		return temp;
+	}
+
+	
 	
 	
 

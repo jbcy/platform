@@ -18,9 +18,10 @@ public class AppDaoImpl implements AppDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			String sql = "INSERT INTO apps (id, name, users) VALUES ('" 
+			String sql = "INSERT INTO apps (id, name, description, users) VALUES ('" 
 					+ app.getId() + "','"
-					+ app.getName() + "', "
+					+ app.getName() + "', '"
+					+ app.getDescription() + "', "
 					+ app.getUsers() + ")";
 			int result = statement.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -47,7 +48,7 @@ public class AppDaoImpl implements AppDao {
 			statement = JdbcUtils.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE name = '" + name +"'");
 			while(rs.next()) {
-				app = new App(rs.getString(1), rs.getString(2), rs.getInt(3));
+				app = new App(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -79,7 +80,8 @@ public class AppDaoImpl implements AppDao {
 				App temp = new App();
 				temp.setId(rs.getString(1));
 				temp.setName(rs.getString(2));
-				temp.setUsers(rs.getInt(3));
+				temp.setDescription(rs.getString(3));
+				temp.setUsers(rs.getInt(4));
 				result.add(temp);
 			}
 		} catch (SQLException e) {
@@ -121,6 +123,33 @@ public class AppDaoImpl implements AppDao {
 			}
 		}
 
+	}
+
+	@Override
+	public App findById(String id) {
+		Statement statement = null;
+		App app = null;
+		try {
+			statement = JdbcUtils.getConnection().createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE id = '" + id +"'");
+			while(rs.next()) {
+				app = new App(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return app;
 	}
 
 }

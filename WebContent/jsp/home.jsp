@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 
-<%@ page import="model.Peanut"%>
-<%@ page import="model.User" %>
- --%>
+    <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <title>Welcome</title>
@@ -19,7 +16,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <!-- Sidebar/menu -->
 <jsp:useBean id="user" type="model.User" scope="session"/>
 <jsp:useBean id="peanut" type="model.Peanut" scope="session"/>
-<jsp:useBean id="apps" type="model.AppType" scope="session"/>
+<jsp:useBean id="apps" class="model.AppType" scope="session"/>
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container">
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
@@ -51,11 +48,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-container">
     <h1><b>Apps</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
-    <form action="change" method="post">
+    <form action="change" method="GET">
       <span class="w3-margin-right">Filter:</span> 
-      <button id="all" class="w3-button w3-black">ALL</button>
-      <button id="newForMe" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>New for me</button>
-      <button id="joined" class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Joined</button>
+      <button name="all" class="w3-button w3-black">ALL</button>
+      <button name="newForMe" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>New for me</button>
+      <button name="joined" class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Joined</button>
 	</form>
     </div>
     </div>
@@ -63,27 +60,31 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   
   <!-- First Photo Grid-->
   <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/lights.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container">
-      <img src="/w3images/nature.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
+  <%@ page import="java.util.List" %>
+    <%@ page import="model.App" %>
+    <% 
+    	List<App> list = null;
+    	if (apps.getType().equals("all")) {
+    		list = apps.getAll();
+    	} else if (apps.getType().equals("joined")) {
+    		list = apps.getJoined();
+    	} else if (apps.getType().equals("newForMe")) {
+    		list = apps.getNewForMe();
+    	}
+    	for (App item : list) {
+    %>
+    
+    	<div class="w3-third w3-container w3-margin-bottom">
+		      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+		      <div class="w3-container w3-white">
+		        <p><b><%= item.getName() %></b></p>
+		        <p><%= item.getDescription() %></p>
+		      </div>
+		    </div> 
+		<% } %>
+    
+    
+    
   </div>
   
 <!--   
@@ -112,7 +113,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div> -->
 
   <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
+  <!-- <div class="w3-center w3-padding-32">
     <div class="w3-bar">
       <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
       <a href="#" class="w3-bar-item w3-black w3-button">1</a>
@@ -121,7 +122,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
       <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
     </div>
-  </div>
+  </div> -->
 
   <!-- Images of Me -->
   <div class="w3-row-padding w3-padding-16" id="memory">
@@ -131,7 +132,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     <h4><b>Record</b></h4>
     
-    <hr>
+    <%@ page import="java.util.List" %>
+    <%@ page import="model.Record" %>
+    <% 
+    	List<Record> temp = (List<Record>) session.getAttribute("records");
+    	for (Record item : temp) {
+    %>
+    
+    	<div class="w3-third w3-container w3-margin-bottom">
+		      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+		      <div class="w3-container w3-white">
+		        <p><b><%= item.getStatement() %></b></p>
+		        <p><%= item.getTime() %></p>
+		      </div>
+		    </div> 
+		<% } %>
+    
     
     
     <hr>
@@ -143,15 +159,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p>${user.name}</p>
+        <p><% user.getEmail(); %></p>
       </div>
       <div class="w3-third w3-teal">
         <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-        <p>${user.name}</p>
+        <p><% user.getName(); %></p>
       </div>
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-        <p>${peanut.points}</p>
+        <p><% peanut.getPoints(); %></p>
       </div>
     </div>
     

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import model.App;
 import model.AppType;
 import model.Peanut;
+import model.Record;
 import service.TransactionImpl;
 
 public class LoginHandler extends HttpServlet {
@@ -42,16 +43,19 @@ public class LoginHandler extends HttpServlet {
 		AppType apps = new AppType();
 		apps.setAll(service.findAllApp());
 		apps.setJoined(service.findUserApps(login.getId()));
-		List<App> newForMe = new ArrayList<>();
-		newForMe.addAll(apps.getAll());
-		newForMe.removeAll(apps.getJoined());
+		List<App> newForMe = service.remove(apps.getAll(), apps.getJoined());
+		
 		apps.setNewForMe(newForMe);
 		apps.setType("all");
 		session.setAttribute("apps", apps);
 		
+		List<Record> records = service.findAllRecord(login.getId());
+		session.setAttribute("records", records);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/home.jsp");
 		dispatcher.forward(request, response);
 	}
+	
 	
 	
 }

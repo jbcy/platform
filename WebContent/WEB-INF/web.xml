@@ -17,4 +17,13 @@
     <servlet-name>LoginHandler</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ChangeAppType</servlet-name>
+    <servlet-class>servlet.AppTypeHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeAppType</servlet-name>
+    <url-pattern>/change</url-pattern>
+  </servlet-mapping>
 </web-app>

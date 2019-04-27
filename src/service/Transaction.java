@@ -18,6 +18,7 @@ public interface Transaction {
 	
 	Peanut findPeanut(String userId);
 	App findAppByName(String name);
+	App findAppById(String id);
 	List<App> findAllApp();
 	List<Record> findRecordByTime(String userId, Date startDate, Date endDate);
 	List<Record> findAllRecord(String userId);

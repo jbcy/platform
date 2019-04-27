@@ -2,6 +2,8 @@ package model;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class AppType {
 
 	private String type;
@@ -18,6 +20,8 @@ public class AppType {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	
 	public List<App> getJoined() {
 		return joined;
 	}
