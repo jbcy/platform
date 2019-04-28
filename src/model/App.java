@@ -1,31 +1,55 @@
 package model;
 
 public class App {
-	private String id;
+	private int id;
 	private String name;
 	private String description;
 	private int users = 0;
+	private int points;
 	
 	public App() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public App(String id, String name, String description, int users) {
+	
+	
+
+
+	public App(String name, String description, int users, int points) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.users = users;
+		this.points = points;
+	}
+
+
+
+
+
+	public App(int id, String name, String description, int users, int points) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.users = users;
+		this.points = points;
 	}
 
-	public String getId() {
+
+
+
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return name;
@@ -50,6 +74,22 @@ public class App {
 
 	public void setUsers(int users) {
 		this.users = users;
+	}
+
+
+
+
+
+	public int getPoints() {
+		return points;
+	}
+
+
+
+
+
+	public void setPoints(int points) {
+		this.points = points;
 	}
 	
 	

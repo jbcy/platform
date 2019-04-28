@@ -16,11 +16,11 @@ public class AppTypeHandler extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		AppType apps = (AppType) session.getAttribute("apps");
 		if (request.getParameter("all") != null) {
-			apps.setType("all");
+			apps.setType("All");
 		} else if (request.getParameter("newForMe") != null) {
-			apps.setType("newForMe");
+			apps.setType("NewForMe");
 		} else if (request.getParameter("joined") != null) {
-			apps.setType("joined");
+			apps.setType("Joined");
 		}
 		session.setAttribute("apps", apps);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/home.jsp");

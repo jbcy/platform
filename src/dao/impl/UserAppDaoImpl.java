@@ -23,10 +23,9 @@ public class UserAppDaoImpl implements UserAppDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			int result = statement.executeUpdate("INSERT INTO users_apps (id, user_id, app_id, join_time) VALUES ('"
-					+ userApp.getId() + "', '"
-					+ userApp.getUserId() + "', '"
-					+ userApp.getAppId() + "', '"
+			int result = statement.executeUpdate("INSERT INTO users_apps (id, user_id, app_id, join_time) VALUES (null, "
+					+ userApp.getUserId() + ", "
+					+ userApp.getAppId() + ", '"
 					+ new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(userApp.getJoinDate()) + "')");
 			
 		} catch (SQLException e) {
@@ -46,17 +45,17 @@ public class UserAppDaoImpl implements UserAppDao {
 	}
 
 	@Override
-	public List<App> findByUser(String userId) {
+	public List<App> findByUser(int userId) {
 		Statement statement = null;
 		List<App> result = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM users_apps WHERE user_id = '" + userId + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM users_apps WHERE user_id = " + userId);
 //			int column = rs.getMetaData().getColumnCount();
 			result = new ArrayList<>();
 			while (rs.next()) {
 				App temp = new App();
-				temp.setId(rs.getString(3));
+				temp.setId(rs.getInt(3));
 				result.add(temp);
 			}
 		} catch (SQLException e) {
@@ -78,17 +77,17 @@ public class UserAppDaoImpl implements UserAppDao {
 	}
 
 	@Override
-	public List<User> findByApp(String appId) {
+	public List<User> findByApp(int appId) {
 		Statement statement = null;
 		List<User> result = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM users_apps WHERE app_id = '" + appId + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM users_apps WHERE app_id = " + appId);
 //			int column = rs.getMetaData().getColumnCount();
 			result = new ArrayList<>();
 			while (rs.next()) {
 				User temp = new User();
-				temp.setId(rs.getString(2));
+				temp.setId(rs.getInt(2));
 				result.add(temp);
 			}
 		} catch (SQLException e) {

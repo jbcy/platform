@@ -24,9 +24,8 @@ public class RecordDaoImpl implements RecordDao {
 		try {
 			
 			statement = JdbcUtils.getConnection().createStatement();
-			int result = statement.executeUpdate("INSERT INTO records (id, user_id, statement, time) VALUES ('"
-					+ record.getId() + "', '"
-					+ record.getUserId() + "', '"
+			int result = statement.executeUpdate("INSERT INTO records (id, user_id, statement, time) VALUES (null, "
+					+ record.getUserId() + ", '"
 					+ record.getStatement() + "', '"
 					+ new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(record.getTime()) + "')");
 			
@@ -47,20 +46,20 @@ public class RecordDaoImpl implements RecordDao {
 	}
 
 	@Override
-	public List<Record> findByTime(String userId, Date startDate, Date endDate) {
+	public List<Record> findByTime(int userId, Date startDate, Date endDate) {
 		Statement statement = null;
 		List<Record> result = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM records WHERE user_id = '" + userId 
-					+ "' AND time BETWEEN ‘" + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startDate) 
+			ResultSet rs = statement.executeQuery("SELECT * FROM records WHERE user_id = " + userId 
+					+ " AND time BETWEEN ‘" + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(startDate) 
 					+ "' AND '" + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(endDate) + "'");
 //			int column = rs.getMetaData().getColumnCount();
 			result = new ArrayList<>();
 			while (rs.next()) {
 				Record temp = new Record();
-				temp.setId(rs.getString(1));
-				temp.setUserId(rs.getString(2));
+				temp.setId(rs.getInt(1));
+				temp.setUserId(rs.getInt(2));
 				temp.setStatement(rs.getString(3));
 				temp.setTime(rs.getDate(4));
 				result.add(temp);
@@ -83,18 +82,18 @@ public class RecordDaoImpl implements RecordDao {
 	}
 
 	@Override
-	public List<Record> findAll(String userId) {
+	public List<Record> findAll(int userId) {
 		Statement statement = null;
 		List<Record> result = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM records WHERE user_id = '" + userId + "'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM records WHERE user_id = " + userId);
 //			int column = rs.getMetaData().getColumnCount();
 			result = new ArrayList<>();
 			while (rs.next()) {
 				Record temp = new Record();
-				temp.setId(rs.getString(1));
-				temp.setUserId(rs.getString(2));
+				temp.setId(rs.getInt(1));
+				temp.setUserId(rs.getInt(2));
 				temp.setStatement(rs.getString(3));
 				temp.setTime(rs.getTimestamp(4));
 				result.add(temp);

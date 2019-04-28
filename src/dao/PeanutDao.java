@@ -8,6 +8,6 @@ import model.Peanut;
  */
 public interface PeanutDao {
 	void insert(Peanut peanut);
-	Peanut find(String userId);
+	Peanut find(int userId);
 	void update(Peanut peanut);
 }

@@ -6,33 +6,52 @@ package model;
  */
 public class Peanut {
 	
-	private String id;
-	private String userId;
+	private int id;
+	private int userId;
 	private int points = 1000;
 	
 	public Peanut() {
 		super();
 	}
 	
-	public Peanut(String id, String userId, int points) {
+	
+	public Peanut(int userId, int points) {
+		super();
+		this.userId = userId;
+		this.points = points;
+	}
+
+
+	public Peanut(int id, int userId, int points) {
 		super();
 		this.id = id;
 		this.userId = userId;
 		this.points = points;
 	}
 	
-	public String getId() {
+	
+
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+
+	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUserId() {
+
+
+	
+
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+
+
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
 
 	public int getPoints() {
 		return points;

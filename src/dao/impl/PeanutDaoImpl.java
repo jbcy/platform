@@ -21,9 +21,8 @@ public class PeanutDaoImpl implements PeanutDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			String sql = "INSERT INTO peanuts (id, user_id, points) VALUES ('" 
-					+ peanut.getId() + "','"
-					+ peanut.getUserId() + "', "
+			String sql = "INSERT INTO peanuts (id, user_id, points) VALUES (null, " 
+					+ peanut.getUserId() + ", "
 					+ peanut.getPoints() + ")";
 			int result = statement.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -43,14 +42,14 @@ public class PeanutDaoImpl implements PeanutDao {
 	}
 
 	@Override
-	public Peanut find(String userId) {
+	public Peanut find(int userId) {
 		Statement statement = null;
 		Peanut peanut = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM peanuts WHERE user_id = '" + userId +"'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM peanuts WHERE user_id = " + userId);
 			while(rs.next()) {
-				peanut = new Peanut(rs.getString(1), rs.getString(2), rs.getInt(3));
+				peanut = new Peanut(rs.getInt(1), rs.getInt(2), rs.getInt(3));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -75,8 +74,8 @@ public class PeanutDaoImpl implements PeanutDao {
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
 			int result = statement.executeUpdate("UPDATE peanuts SET points = " 
-			+ peanut.getPoints() + " WHERE user_id = '" 
-					+ peanut.getUserId() + "'");
+			+ peanut.getPoints() + " WHERE user_id = " 
+					+ peanut.getUserId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

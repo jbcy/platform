@@ -8,7 +8,7 @@ import model.UserApp;
 
 public interface UserAppDao {
 	void insert(UserApp userApp);
-	List<App> findByUser(String userId);
-	List<User> findByApp(String appId);
+	List<App> findByUser(int userId);
+	List<User> findByApp(int appId);
 	
 }

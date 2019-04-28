@@ -8,7 +8,7 @@ import model.Record;
 
 public interface RecordDao {
 	void insert(Record record);
-	List<Record> findByTime(String userId, Date startDate, Date endDate);
-	List<Record> findAll(String userId);
+	List<Record> findByTime(int userId, Date startDate, Date endDate);
+	List<Record> findAll(int userId);
 	void update(Record record);
 }

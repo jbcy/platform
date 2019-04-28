@@ -10,20 +10,20 @@ import model.User;
 import model.UserApp;
 
 public interface Transaction {
-	void insertPeanut(String userId);
+	void insertPeanut(int userId);
 	void insertApp(App app);
 	void insertUserApp(UserApp userApp);
 	void insertRecord(Record record);
 	
 	
-	Peanut findPeanut(String userId);
+	Peanut findPeanut(int userId);
 	App findAppByName(String name);
-	App findAppById(String id);
+	App findAppById(int id);
 	List<App> findAllApp();
-	List<Record> findRecordByTime(String userId, Date startDate, Date endDate);
-	List<Record> findAllRecord(String userId);
-	List<App> findUserApps(String userId);
-	List<User> findAppUsers(String appId);
+	List<Record> findRecordByTime(int userId, Date startDate, Date endDate);
+	List<Record> findAllRecord(int userId);
+	List<App> findUserApps(int userId);
+	List<User> findAppUsers(int appId);
 	
 	void updatePeanut(Peanut peanut);
 	void updateApp(App app);

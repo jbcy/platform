@@ -30,8 +30,8 @@ public class TransactionImpl implements Transaction {
 	
 	
 	@Override
-	public void insertPeanut(String userId) {		
-		peanutDao.insert(new Peanut(GMethod.makeID(), userId, 1000));	
+	public void insertPeanut(int userId) {		
+		peanutDao.insert(new Peanut(userId, 1000));	
 	}
 
 
@@ -54,7 +54,7 @@ public class TransactionImpl implements Transaction {
 	}
 	
 	@Override
-	public Peanut findPeanut(String userId) {
+	public Peanut findPeanut(int userId) {
 		return peanutDao.find(userId);
 	}
 
@@ -64,7 +64,7 @@ public class TransactionImpl implements Transaction {
 	}
 	
 	@Override
-	public App findAppById(String id) {
+	public App findAppById(int id) {
 		return appDao.findById(id);
 	}
 
@@ -74,17 +74,17 @@ public class TransactionImpl implements Transaction {
 	}
 
 	@Override
-	public List<Record> findRecordByTime(String userId, Date startDate, Date endDate) {
+	public List<Record> findRecordByTime(int userId, Date startDate, Date endDate) {
 		return recordDao.findByTime(userId, startDate, endDate);
 	}
 
 	@Override
-	public List<Record> findAllRecord(String userId) {
+	public List<Record> findAllRecord(int userId) {
 		return recordDao.findAll(userId);
 	}
 
 	@Override
-	public List<App> findUserApps(String userId) {
+	public List<App> findUserApps(int userId) {
 		List<App> list = userAppDao.findByUser(userId);
 		for (int i = 0; i < list.size(); i++) {
 			list.set(i, findAppById(list.get(i).getId()));
@@ -93,7 +93,7 @@ public class TransactionImpl implements Transaction {
 	}
 
 	@Override
-	public List<User> findAppUsers(String appId) {
+	public List<User> findAppUsers(int appId) {
 		return userAppDao.findByApp(appId);
 	}
 
@@ -124,7 +124,7 @@ public class TransactionImpl implements Transaction {
 		temp.addAll(all);
 		for (int i = 0; i < joined.size(); ++i) {
 			for (int j = 0; j < temp.size(); ++j) {
-				if (temp.get(j).getId().equals(joined.get(i).getId())) {
+				if (temp.get(j).getId() == joined.get(i).getId()) {
 					temp.remove(j);
 					break;
 				}

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.26)
 # Database: jbcy
-# Generation Time: 2019-04-26 19:41:08 +0000
+# Generation Time: 2019-04-28 15:39:48 +0000
 # ************************************************************
 
 
@@ -26,12 +26,25 @@
 DROP TABLE IF EXISTS `apps`;
 
 CREATE TABLE `apps` (
-  `id` varchar(40) NOT NULL DEFAULT '',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL DEFAULT '',
+  `description` varchar(254) DEFAULT NULL,
   `users` int(10) unsigned DEFAULT '0',
+  `points` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `apps` WRITE;
+/*!40000 ALTER TABLE `apps` DISABLE KEYS */;
+
+INSERT INTO `apps` (`id`, `name`, `description`, `users`, `points`)
+VALUES
+	(1,'test1','1',0,20),
+	(2,'test2','2',0,10),
+	(3,'test3','3',0,5);
+
+/*!40000 ALTER TABLE `apps` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table peanuts
@@ -40,8 +53,8 @@ CREATE TABLE `apps` (
 DROP TABLE IF EXISTS `peanuts`;
 
 CREATE TABLE `peanuts` (
-  `id` varchar(40) NOT NULL DEFAULT '',
-  `user_id` varchar(40) NOT NULL DEFAULT '',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `points` int(10) unsigned NOT NULL DEFAULT '1000',
   PRIMARY KEY (`id`),
   KEY `user_peanut` (`user_id`),
@@ -53,7 +66,7 @@ LOCK TABLES `peanuts` WRITE;
 
 INSERT INTO `peanuts` (`id`, `user_id`, `points`)
 VALUES
-	('e2ce91e7-a231-4710-b7ce-f51eea960d9d','a',10000);
+	(1,1,10000);
 
 /*!40000 ALTER TABLE `peanuts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -65,8 +78,8 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `records`;
 
 CREATE TABLE `records` (
-  `id` varchar(40) NOT NULL DEFAULT '',
-  `user_id` varchar(40) NOT NULL DEFAULT '',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `statement` varchar(254) NOT NULL DEFAULT '',
   `time` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -79,7 +92,7 @@ LOCK TABLES `records` WRITE;
 
 INSERT INTO `records` (`id`, `user_id`, `statement`, `time`)
 VALUES
-	('902cb842-1104-4f0e-93f6-9f0cbf39dcba','a','test','2019-04-26 17:08:05');
+	(902,1,'test','2019-04-26 17:08:05');
 
 /*!40000 ALTER TABLE `records` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -91,7 +104,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` varchar(40) NOT NULL DEFAULT '',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(20) NOT NULL,
@@ -104,7 +117,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`)
 VALUES
-	('a','Claudia','cmgomezbeltran1@sheffield.ac.uk ','931009',1);
+	(1,'Claudia','cmgomezbeltran1@sheffield.ac.uk ','931009',1);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -116,9 +129,9 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `users_apps`;
 
 CREATE TABLE `users_apps` (
-  `id` varchar(40) NOT NULL DEFAULT '',
-  `user_id` varchar(40) NOT NULL DEFAULT '',
-  `app_id` varchar(40) NOT NULL DEFAULT '',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `app_id` int(11) NOT NULL,
   `join_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_apps` (`user_id`),
@@ -127,6 +140,16 @@ CREATE TABLE `users_apps` (
   CONSTRAINT `user_apps` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `users_apps` WRITE;
+/*!40000 ALTER TABLE `users_apps` DISABLE KEYS */;
+
+INSERT INTO `users_apps` (`id`, `user_id`, `app_id`, `join_date`)
+VALUES
+	(1,1,1,'0000-00-00'),
+	(2,1,2,'0000-00-00');
+
+/*!40000 ALTER TABLE `users_apps` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 

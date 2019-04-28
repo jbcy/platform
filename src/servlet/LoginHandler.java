@@ -31,7 +31,7 @@ public class LoginHandler extends HttpServlet {
 		login.setEmail(userEmail);
 		login.setPassword(password);
 		login.setName("test");
-		login.setId("a");
+		login.setId(1);
 		session.setAttribute("user", login);
 		
 		
@@ -46,7 +46,7 @@ public class LoginHandler extends HttpServlet {
 		List<App> newForMe = service.remove(apps.getAll(), apps.getJoined());
 		
 		apps.setNewForMe(newForMe);
-		apps.setType("all");
+		apps.setType("All");
 		session.setAttribute("apps", apps);
 		
 		List<Record> records = service.findAllRecord(login.getId());

@@ -3,9 +3,9 @@ package model;
 import java.util.Date;
 
 public class UserApp {
-	private String id;
-	private String userId;
-	private String appId;
+	private int id;
+	private int userId;
+	private int appId;
 	private Date joinDate;
 	
 	public UserApp() {
@@ -13,7 +13,9 @@ public class UserApp {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserApp(String id, String userId, String appId, Date joinDate) {
+	
+
+	public UserApp(int id, int userId, int appId, Date joinDate) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -21,29 +23,43 @@ public class UserApp {
 		this.joinDate = joinDate;
 	}
 
-	public String getId() {
+
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+
+
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getUserId() {
+
+
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+
+
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	public String getAppId() {
+
+
+	public int getAppId() {
 		return appId;
 	}
 
-	public void setAppId(String appId) {
+
+
+	public void setAppId(int appId) {
 		this.appId = appId;
 	}
+
+
 
 	public Date getJoinDate() {
 		return joinDate;

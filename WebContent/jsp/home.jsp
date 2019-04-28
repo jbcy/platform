@@ -46,11 +46,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
-    <h1><b>Apps</b></h1>
+    <%@ page import="model.App" %>
+    <h1><b><jsp:getProperty name="apps" property="type"/> Apps</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
     <form action="change" method="GET">
       <span class="w3-margin-right">Filter:</span> 
-      <button name="all" class="w3-button w3-black">ALL</button>
+      <button name="all" class="w3-button w3-white">ALL</button>
       <button name="newForMe" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>New for me</button>
       <button name="joined" class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Joined</button>
 	</form>
@@ -64,11 +65,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <%@ page import="model.App" %>
     <% 
     	List<App> list = null;
-    	if (apps.getType().equals("all")) {
+    	if (apps.getType().equals("All")) {
     		list = apps.getAll();
-    	} else if (apps.getType().equals("joined")) {
+    	} else if (apps.getType().equals("Joined")) {
     		list = apps.getJoined();
-    	} else if (apps.getType().equals("newForMe")) {
+    	} else if (apps.getType().equals("NewForMe")) {
     		list = apps.getNewForMe();
     	}
     	for (App item : list) {
@@ -159,15 +160,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p><% user.getEmail(); %></p>
+        <p><jsp:getProperty name="user" property="email"/></p>
       </div>
       <div class="w3-third w3-teal">
         <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-        <p><% user.getName(); %></p>
+        <p><jsp:getProperty name="user" property="name"/></p>
       </div>
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-        <p><% peanut.getPoints(); %></p>
+        <p><jsp:getProperty name="peanut" property="points"/></p>
       </div>
     </div>
     

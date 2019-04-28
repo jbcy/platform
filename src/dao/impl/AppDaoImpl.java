@@ -18,11 +18,11 @@ public class AppDaoImpl implements AppDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			String sql = "INSERT INTO apps (id, name, description, users) VALUES ('" 
-					+ app.getId() + "','"
+			String sql = "INSERT INTO apps (id, name, description, users, points) VALUES (null, '" 
 					+ app.getName() + "', '"
 					+ app.getDescription() + "', "
-					+ app.getUsers() + ")";
+					+ app.getUsers() + ", "
+					+ app.getPoints() + ")";
 			int result = statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -48,7 +48,7 @@ public class AppDaoImpl implements AppDao {
 			statement = JdbcUtils.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE name = '" + name +"'");
 			while(rs.next()) {
-				app = new App(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+				app = new App(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -78,10 +78,11 @@ public class AppDaoImpl implements AppDao {
 			result = new ArrayList<>();
 			while (rs.next()) {
 				App temp = new App();
-				temp.setId(rs.getString(1));
+				temp.setId(rs.getInt(1));
 				temp.setName(rs.getString(2));
 				temp.setDescription(rs.getString(3));
 				temp.setUsers(rs.getInt(4));
+				temp.setPoints(rs.getInt(5));
 				result.add(temp);
 			}
 		} catch (SQLException e) {
@@ -107,8 +108,8 @@ public class AppDaoImpl implements AppDao {
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
 			int result = statement.executeUpdate("UPDATE apps SET users = users + 1" 
-			 + " WHERE id = '" 
-					+ app.getId() + "'");
+			 + " WHERE id = " 
+					+ app.getId());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,14 +127,14 @@ public class AppDaoImpl implements AppDao {
 	}
 
 	@Override
-	public App findById(String id) {
+	public App findById(int id) {
 		Statement statement = null;
 		App app = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE id = '" + id +"'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE id = " + id);
 			while(rs.next()) {
-				app = new App(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+				app = new App(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
 			}
 			rs.close();
 		} catch (SQLException e) {
