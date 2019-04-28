@@ -2,6 +2,9 @@ package utils;
 
 import java.util.UUID;
 
+import model.App;
+import service.TransactionImpl;
+
 /**
  * For General method
  * @author Jingbo Lin
@@ -18,5 +21,5 @@ public class GMethod {
 		return UUID.randomUUID().toString();
 	}
 	
-	
+
 }
