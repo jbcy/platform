@@ -26,34 +26,38 @@
     <a href="#join" style="width:25%" class="w3-bar-item w3-button w3-hover-black">Join</a>
   </div>
 </div>
-
 <!-- About description -->
 <div class="w3-container w3-padding-64 w3-light-gray w3-grayscale-min" id="description">
   <div class="w3-content">
     <h1 class="w3-center w3-text-grey"><b>JBCY</b></h1>
     
-    <p><i>The JBCY platform serve app developers to offer their services for the students of the University of Sheffield.
-    By being keen on “Easy student life”, the development team provides two app -- “Module rating” and “The second-hand selling”.
-    The apps which serve in the same purpose are welcome.</i>
+    <p> The JBCY platform help app developers to offer their services to the students of the University of Sheffield
+    By being keen on an Easy Student Life. The development team provides two apps, Module rating and Second-hand selling.
+    The apps which serve in the same purpose are welcome.
     </p><br>
-  
+		
+ 
   </div>
 </div>
 
 
 <!-- Login information -->
 <div class="w3-container w3-padding-64 w3-light-gray w3-grayscale-min  " id="login">
+<div class="w3-panel w3-pale-yellow w3-display-container w3-border">
+
+  <span>${messages}</span>
+</div>
+
   <div class="w3-content">
     <h1 class="w3-text-grey w3-center"><b>Welcome back!</b></h1>
-    <form class="w3-container" action="login" method="GET">
-
+    <form class="w3-container" action="login" method="post" >
 	<label>Email</label>
-	<input class="w3-input" type="email" id="lemail">
+	<input class="w3-input" type="email" id="lemail" name="lemail">
 	
 	<label>Password</label>
-	<input class="w3-input" type="password" id="lpassword">
+	<input class="w3-input" type="password" id="lpassword" name="lpassword">
 	<div class="w3-center w3-padding-16">
-	<button class="w3-button w3-black w3-center">Log in</button>
+	<button class="w3-button w3-black w3-center" type="submit" name="btn" value="l">Log in</button>
 	</div>
 	
 	</form>
@@ -73,25 +77,31 @@
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px">
     <div class="w3-container w3-white ">
+    
+    	<div id="errorsRegister">
+    	</div>
       <h1 class="w3-wide w3-center">Registration</h1>
-      <form class="w3-padding-16">
+      <form class="w3-padding-16"   action="Register" method="post" onsubmit="return validationR()">
       	<label>Name</label>
-		<input class="w3-input" type="text">
+		<input class="w3-input" type="text" name="rname" id="rname">
 		<label>Email</label>
-		<input class="w3-input" type="email">
+		<input class="w3-input" type="email" name="remail" id="remail">
 		<label>Password</label>
-		<input class="w3-input" type="password">
+		<input class="w3-input" type="password" name="rpassword" id="rpassword">
      	<label>Repeat Password</label>
-		<input class="w3-input" type="password">
+		<input class="w3-input" type="password" name="rrepeat" id="rrepeat">
+		
+		  <div class="w3-row">
+	        <div class="w3-half">
+	          <button type="submit" name="btn"  value="r"  class="w3-button w3-block w3-green">Join</button>
+	        </div>
+	        <div class="w3-half">
+	          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-red">Cancel</button>
+	        </div>
+	      </div>
+		
       </form>
-      <div class="w3-row">
-        <div class="w3-half">
-          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-green">Join</button>
-        </div>
-        <div class="w3-half">
-          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block w3-red">Cancel</button>
-        </div>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -101,6 +111,8 @@
   <p>Powered by team 13</p>
 </footer>
 <div class="w3-hide-small" style="margin-bottom:32px"></div>
+
+<script src="./js/register.js"></script>
 
 </body>
 </html>
