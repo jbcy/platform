@@ -5,6 +5,7 @@ import java.util.Date;
 public class Record {
 	private int id;
 	private int userId;
+	private String type;
 	private String statement;
 	private Date time;
 	public Record() {
@@ -12,22 +13,28 @@ public class Record {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Record(int userId, String statement, Date time) {
+
+
+	public Record(int userId, String type, String statement, Date time) {
 		super();
 		this.userId = userId;
+		this.type = type;
 		this.statement = statement;
 		this.time = time;
 	}
 
-	public Record(int id, int userId, String statement, Date time) {
+
+
+	public Record(int id, int userId, String type, String statement, Date time) {
 		super();
 		this.id = id;
 		this.userId = userId;
+		this.type = type;
 		this.statement = statement;
 		this.time = time;
 	}
 
-	
+
 	public int getId() {
 		return id;
 	}
@@ -42,6 +49,15 @@ public class Record {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getStatement() {

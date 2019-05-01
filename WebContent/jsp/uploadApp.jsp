@@ -3,7 +3,7 @@
     <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
-<title>Welcome</title>
+<title>Upload Your App</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -40,60 +40,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px">
-
-  <!-- Header -->
-  <header id="home">
+<header id="home">
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
-    <%@ page import="model.App" %>
-    <h1><b><jsp:getProperty name="apps" property="type"/> Apps</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-    <form action="change" method="GET">
-      <span class="w3-margin-right">Filter:</span> 
-      <button name="all" class="w3-button w3-white">ALL</button>
-      <button name="newForMe" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>New for me</button>
-      <button name="joined" class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Joined</button>
-	</form>
-    </div>
+	    
+	    <h1><b>Start to gain more points</b></h1>
+	    
     </div>
   </header>
   
-  <!-- First Photo Grid-->
-  <div class="w3-row-padding">
-  <%@ page import="java.util.List" %>
-    <%@ page import="model.App" %>
-    <% 
-    	List<App> list = null;
-    	if (apps.getType().equals("All")) {
-    		list = apps.getAll();
-    	} else if (apps.getType().equals("Joined")) {
-    		list = apps.getJoined();
-    	} else if (apps.getType().equals("NewForMe")) {
-    		list = apps.getNewForMe();
-    	}
-    	for (App item : list) {
-    %>
-    
-    	<div class="w3-third w3-container w3-margin-bottom">
-		      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-		      <div class="w3-container w3-white">
-		        <p><b><%= item.getName() %></b></p>
-		        <p><%= item.getDescription() %></p>
-		      </div>
-		    </div> 
-		<% } %>
-    
-    
-    
-  </div>
-  
-
-  <!-- Images of Me -->
-  <div class="w3-row-padding w3-padding-16" id="memory">
-    
-  </div>
-
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     <h4><b>Record</b></h4>
     
@@ -118,26 +74,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <hr>
     
   </div>
-  <!-- Contact Section -->
-  <div class="w3-container w3-padding-large w3-grey">
-    <h4 id="contact"><b>Profile</b></h4>
-    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
-      <div class="w3-third w3-dark-grey">
-        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p><jsp:getProperty name="user" property="email"/></p>
-      </div>
-      <div class="w3-third w3-teal">
-        <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-        <p><jsp:getProperty name="user" property="name"/></p>
-      </div>
-      <div class="w3-third w3-dark-grey">
-        <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-        <p><jsp:getProperty name="peanut" property="points"/></p>
-      </div>
-    </div>
-    
-  </div>
-
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-dark-grey">
   <div class="w3-row-padding">

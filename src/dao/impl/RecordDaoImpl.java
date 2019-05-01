@@ -24,8 +24,9 @@ public class RecordDaoImpl implements RecordDao {
 		try {
 			
 			statement = JdbcUtils.getConnection().createStatement();
-			int result = statement.executeUpdate("INSERT INTO records (id, user_id, statement, time) VALUES (null, "
+			int result = statement.executeUpdate("INSERT INTO records (id, user_id, type, statement, time) VALUES (null, "
 					+ record.getUserId() + ", '"
+					+ record.getType() + "', '"
 					+ record.getStatement() + "', '"
 					+ new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(record.getTime()) + "')");
 			
@@ -60,8 +61,9 @@ public class RecordDaoImpl implements RecordDao {
 				Record temp = new Record();
 				temp.setId(rs.getInt(1));
 				temp.setUserId(rs.getInt(2));
-				temp.setStatement(rs.getString(3));
-				temp.setTime(rs.getDate(4));
+				temp.setType(rs.getString(3));
+				temp.setStatement(rs.getString(4));
+				temp.setTime(rs.getDate(5));
 				result.add(temp);
 			}
 		} catch (SQLException e) {
@@ -82,6 +84,43 @@ public class RecordDaoImpl implements RecordDao {
 	}
 
 	@Override
+	public List<Record> findByType(int userId, String type) {
+		Statement statement = null;
+		List<Record> result = null;
+		try {
+			statement = JdbcUtils.getConnection().createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM records WHERE user_id = " + userId 
+					+ " AND type = ‘" + type + "'");
+//			int column = rs.getMetaData().getColumnCount();
+			result = new ArrayList<>();
+			while (rs.next()) {
+				Record temp = new Record();
+				temp.setId(rs.getInt(1));
+				temp.setUserId(rs.getInt(2));
+				temp.setType(rs.getString(3));
+				temp.setStatement(rs.getString(4));
+				temp.setTime(rs.getDate(5));
+				result.add(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	
+	@Override
 	public List<Record> findAll(int userId) {
 		Statement statement = null;
 		List<Record> result = null;
@@ -94,8 +133,9 @@ public class RecordDaoImpl implements RecordDao {
 				Record temp = new Record();
 				temp.setId(rs.getInt(1));
 				temp.setUserId(rs.getInt(2));
-				temp.setStatement(rs.getString(3));
-				temp.setTime(rs.getTimestamp(4));
+				temp.setType(rs.getString(3));
+				temp.setStatement(rs.getString(4));
+				temp.setTime(rs.getDate(5));
 				result.add(temp);
 			}
 		} catch (SQLException e) {
@@ -120,6 +160,7 @@ public class RecordDaoImpl implements RecordDao {
 		// TODO Auto-generated method stub
 
 	}
+
 	
 	
 }
