@@ -21,6 +21,7 @@ public interface Transaction {
 	App findAppById(int id);
 	List<App> findAllApp();
 	List<Record> findRecordByTime(int userId, Date startDate, Date endDate);
+	List<Record> findRecordByType(int userId, String type);
 	List<Record> findAllRecord(int userId);
 	List<App> findUserApps(int userId);
 	List<User> findAppUsers(int appId);

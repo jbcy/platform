@@ -3,7 +3,7 @@
     <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
-<title>Welcome</title>
+<title>Upload Your App</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,12 +22,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
+    <!-- <img src="/w3images/avatar_g2.jpg" style="width:45%;" class="w3-round"> --><br><br>
 	<h4><b><jsp:getProperty name="user" property="name"/></b></h4>
    <h5>Points: <b><jsp:getProperty name="peanut" property="points"/></b></h5>
     
   </div>
   <div class="w3-bar-block">
-    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-home fa-fw w3-margin-right"></i>Home</a> 
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a> 
     <a href="#memory" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Memory</a> 
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
   </div>
@@ -39,60 +40,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px">
-
-  <!-- Header -->
-  <header id="home">
+<header id="home">
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
-    <%@ page import="model.App" %>
-    <h1><b><jsp:getProperty name="apps" property="type"/> Apps</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-    <form action="change" method="GET">
-      <span class="w3-margin-right">Filter:</span> 
-      <button name="all" class="w3-button w3-white">ALL</button>
-      <button name="newForMe" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>New for me</button>
-      <button name="joined" class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Joined</button>
-	</form>
-    </div>
+	    
+	    <h1><b>Start to gain more points</b></h1>
+	    
     </div>
   </header>
   
-  <!-- First Photo Grid-->
-  <div class="w3-row-padding">
-  <%@ page import="java.util.List" %>
-    <%@ page import="model.App" %>
-    <% 
-    	List<App> list = null;
-    	if (apps.getType().equals("All")) {
-    		list = apps.getAll();
-    	} else if (apps.getType().equals("Joined")) {
-    		list = apps.getJoined();
-    	} else if (apps.getType().equals("NewForMe")) {
-    		list = apps.getNewForMe();
-    	}
-    	for (App item : list) {
-    %>
-    
-    	<div class="w3-third w3-container w3-margin-bottom">
-		      
-		      <div class="w3-container w3-white">
-		        <p><b><%= item.getName() %></b></p>
-		        <p><%= item.getDescription() %></p>
-		      </div>
-		    </div> 
-		<% } %>
-    
-    
-    
-  </div>
-  
-
-  <!-- Images of Me -->
-  <div class="w3-row-padding w3-padding-16" id="memory">
-    
-  </div>
-
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     <h4><b>Record</b></h4>
     
@@ -104,7 +61,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     %>
     
     	<div class="w3-third w3-container w3-margin-bottom">
-		      
+		      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
 		      <div class="w3-container w3-white">
 		        <p><b><%= item.getStatement() %></b></p>
 		        <p><%= item.getTime() %></p>
@@ -117,42 +74,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <hr>
     
   </div>
-  <!-- profile Section -->
-  <div class="w3-container w3-padding-large w3-grey">
-    <h4 id="contact"><b>Profile</b></h4>
-    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
-      <div class="w3-third w3-dark-grey">
-        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p><jsp:getProperty name="user" property="email"/></p>
-      </div>
-      <div class="w3-third w3-teal">
-        <p><i class="fa fa-user w3-xxlarge w3-text-light-grey"></i></p>
-        <p><jsp:getProperty name="user" property="name"/></p>
-      </div>
-      <div class="w3-third w3-dark-grey">
-        <p><i class="fa fa-money w3-xxlarge w3-text-light-grey"></i></p>
-        <p><jsp:getProperty name="peanut" property="points"/></p>
-      </div>
-    </div>
-    <h3>Change password</h3>
-     <form class="w3-container" action="change" method="post" >
-	
-	<label>Old Password</label>
-	<input class="w3-input" type="password" id="password" name="password">
-	<label>New Password</label>
-	<input class="w3-input" type="password" id="newPassword" name="newPassword">
-	<label>Repeat New Password</label>
-	<input class="w3-input" type="password" id="rpassword" name="rpassword">
-	<div class="w3-center w3-padding-16">
-	<button class="w3-button w3-black w3-center" type="submit" name="btn" >Change</button>
-	</div>
-	
-	</form>
-    
-    
-  </div>
-
-
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-dark-grey">
   <div class="w3-row-padding">
@@ -178,9 +99,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </ul>
     </div>
 
+    <div class="w3-third">
+      <h3>POPULAR TAGS</h3>
+      <p>
+        <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">London</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">DIY</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Family</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Shopping</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Games</span>
+      </p>
+    </div>
 
-  <!-- Footer -->
-
+  </div>
+  </footer>
   
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
 

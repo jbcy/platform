@@ -77,6 +77,12 @@ public class TransactionImpl implements Transaction {
 	public List<Record> findRecordByTime(int userId, Date startDate, Date endDate) {
 		return recordDao.findByTime(userId, startDate, endDate);
 	}
+	
+	@Override
+	public List<Record> findRecordByType(int userId, String type) {
+		
+		return recordDao.findByType(userId, type);
+	}
 
 	@Override
 	public List<Record> findAllRecord(int userId) {
@@ -132,6 +138,9 @@ public class TransactionImpl implements Transaction {
 		}
 		return temp;
 	}
+
+
+	
 
 	
 	
