@@ -26,6 +26,14 @@
     <url-pattern>/change</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ProfileServlet</servlet-name>
+    <servlet-class>servlet.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileServlet</servlet-name>
+    <url-pattern>/Home</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>servlet.RegisterServlet</servlet-class>
   </servlet>
@@ -33,5 +41,4 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/Register</url-pattern>
   </servlet-mapping>
-  
 </web-app>

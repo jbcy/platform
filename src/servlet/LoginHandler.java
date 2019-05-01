@@ -63,19 +63,9 @@ public class LoginHandler extends HttpServlet {
 		Peanut peanut = service.findPeanut(user.getId());
 		session.setAttribute("peanut", peanut);
 		
-		AppType apps = new AppType();
-		apps.setAll(service.findAllApp());
-		apps.setJoined(service.findUserApps(user.getId()));
-		List<App> newForMe = service.remove(apps.getAll(), apps.getJoined());
+	
 		
-		apps.setNewForMe(newForMe);
-		apps.setType("All");
-		session.setAttribute("apps", apps);
-		
-		List<Record> records = service.findAllRecord(user.getId());
-		session.setAttribute("records", records);
-		
-		getServletContext().getRequestDispatcher("/jsp/home.jsp").include(request, response);
+	    response.sendRedirect(request.getContextPath() + "/Profile");
 			
 		}
 		else

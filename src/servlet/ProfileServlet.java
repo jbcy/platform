@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import model.App;
 import model.AppType;
@@ -20,16 +18,16 @@ import model.User;
 import service.TransactionImpl;
 
 /**
- * Servlet implementation class homeServlet
+ * Servlet implementation class ProfileServlet
  */
-@WebServlet("/homeServlet")
-public class homeServlet extends HttpServlet {
+@WebServlet("/Profile")
+public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public homeServlet() {
+    public ProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,13 +38,12 @@ public class homeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		User user= (User) session.getAttribute("user");
-		if(user!=null)
+		if(user.getEmail()!=null)
 		{
-			
-		
 		TransactionImpl service = new TransactionImpl();
 		Peanut peanut = service.findPeanut(user.getId());
 		session.setAttribute("peanut", peanut);
+		
 		AppType apps = new AppType();
 		apps.setAll(service.findAllApp());
 		apps.setJoined(service.findUserApps(user.getId()));
@@ -64,10 +61,9 @@ public class homeServlet extends HttpServlet {
 		}
 		else
 		{
-			//redirect to login
+			response.sendRedirect("/index.jsp");
 		}
-		
-		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

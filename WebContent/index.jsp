@@ -90,7 +90,7 @@
 		<input class="w3-input" type="password" name="rpassword" id="rpassword">
      	<label>Repeat Password</label>
 		<input class="w3-input" type="password" name="rrepeat" id="rrepeat">
-		
+		<br>
 		  <div class="w3-row">
 	        <div class="w3-half">
 	          <button type="submit" name="btn"  value="r"  class="w3-button w3-block w3-green">Join</button>

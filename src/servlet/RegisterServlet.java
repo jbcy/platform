@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -57,24 +58,22 @@ public class RegisterServlet extends HttpServlet {
 			
 			TransactionImpl service = new TransactionImpl();
 			Peanut peanut = service.findPeanut(newUser.getId());
-			session.setAttribute("peanut", peanut);
+	
 			
-			AppType apps = new AppType();
-			apps.setAll(service.findAllApp());
-			apps.setJoined(service.findUserApps(newUser.getId()));
-			List<App> newForMe = service.remove(apps.getAll(), apps.getJoined());
-			
-			apps.setNewForMe(newForMe);
-			apps.setType("All");
-			session.setAttribute("apps", apps);
-			
-			List<Record> records = service.findAllRecord(newUser.getId());
-			session.setAttribute("records", records);
-			request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);
+		  response.sendRedirect(request.getContextPath() + "/Profile");
 		}
 		else
 		{
-			request.setAttribute("message", answer);
+
+			PrintWriter out = response.getWriter();
+		    out.println("<div class=\"w3-panel w3-pale-yellow w3-display-container w3-border\">\n" + 
+		    		"			  <span onclick=\"this.parentElement.style.display='none'\"\n" + 
+		    		"			  class=\"w3-button w3-large w3-display-topright\">&times;</span>\n" + 
+		    		"			  <h3>Warning!</h3>\n" + 
+		    		"			  <p>"+answer + "</p>\n" + 
+		    		"			</div>");
+			
+
 			 request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	}
