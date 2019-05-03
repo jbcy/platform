@@ -134,8 +134,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <p><jsp:getProperty name="peanut" property="points"/></p>
       </div>
     </div>
+    <div class="w3-panel w3-pale-yellow w3-display-container w3-border">
+
+  <span>${messages}</span>
+</div>
     <h3>Change password</h3>
-     <form class="w3-container" action="change" method="post" >
+    
+    
+     <form class="w3-container" action="changePass" method="post" >
 	
 	<label>Old Password</label>
 	<input class="w3-input" type="password" id="password" name="password">

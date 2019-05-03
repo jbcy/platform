@@ -41,7 +41,9 @@ public class LoginHandler extends HttpServlet {
 		
 		if(login!=null)
 		{
+			login.setPassword("");
 			request.getSession(true).setAttribute("user", login);
+			
 			doGet(request, response);
 			
 		}
@@ -59,7 +61,7 @@ public class LoginHandler extends HttpServlet {
 		User user= (User) session.getAttribute("user");
 		if(user!=null)
 		{
-			System.out.println("1");
+
 		TransactionImpl service = new TransactionImpl();
 		Peanut peanut = service.findPeanut(user.getId());
 		session.setAttribute("peanut", peanut);

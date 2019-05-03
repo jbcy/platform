@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 
-	
+	@Override
 	public int findId(String email)
 	{
 		Statement statement = null;
@@ -168,4 +168,58 @@ public class UserDaoImpl implements UserDao {
 			}
 			return logedUser;
 		}
+	 
+	 
+	 @Override
+		public String updatePassword(String old, String newPass, int id) {
+			Statement conne = null;
+			 String pass=generatePass(newPass);
+
+			
+			try {
+				conne = JdbcUtils.getConnection().createStatement();
+				
+				ResultSet rs = conne.executeQuery("SELECT password FROM users WHERE id = '" + id +"'");
+				while(rs.next()) {
+					
+					if(rs.getString(1)!=null)
+					{
+						if(BCrypt.checkpw(old,  rs.getString(1)))
+						{
+							String sql = "UPDATE users SET password='" 
+									+ pass +  "' where id='" + id +"'";
+							int result = conne.executeUpdate(sql);	
+							return "Success";
+							
+						}	
+						else
+						{
+							return "Old password does not match";
+						}
+					}
+					
+				
+				}
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				if (conne != null) {
+					try {
+						
+						conne.close(); 
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			
+			}
+		return "Error";
+		}
+	 
+	 
 }
