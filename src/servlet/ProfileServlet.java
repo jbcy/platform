@@ -38,7 +38,7 @@ public class ProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		User user= (User) session.getAttribute("user");
-		if(user.getEmail()!=null)
+		if(user!=null)
 		{
 		TransactionImpl service = new TransactionImpl();
 		Peanut peanut = service.findPeanut(user.getId());
@@ -61,7 +61,7 @@ public class ProfileServlet extends HttpServlet {
 		}
 		else
 		{
-			response.sendRedirect("/index.jsp");
+			getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
 		}
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

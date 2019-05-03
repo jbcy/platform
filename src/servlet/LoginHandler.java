@@ -57,20 +57,19 @@ public class LoginHandler extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		User user= (User) session.getAttribute("user");
-		if(user.getEmail()!=null)
+		if(user!=null)
 		{
+			System.out.println("1");
 		TransactionImpl service = new TransactionImpl();
 		Peanut peanut = service.findPeanut(user.getId());
 		session.setAttribute("peanut", peanut);
-		
-	
 		
 	    response.sendRedirect(request.getContextPath() + "/Profile");
 			
 		}
 		else
 		{
-			response.sendRedirect("/index.jsp");
+			getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
 		}
 		
 		
