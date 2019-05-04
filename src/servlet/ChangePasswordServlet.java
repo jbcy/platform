@@ -56,7 +56,7 @@ public class ChangePasswordServlet extends HttpServlet {
 			else
 			{
 				UserDaoImpl change= new UserDaoImpl();
-			String answer= change.updatePassword(old, newPass, user.getId());
+				String answer= change.updatePassword(old, newPass, user.getId());
 			if(answer.equals("success"))
 			{
 			

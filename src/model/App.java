@@ -2,6 +2,7 @@ package model;
 
 public class App {
 	private int id;
+	private int ownerId;
 	private String name;
 	private String description;
 	private int users = 0;
@@ -13,11 +14,9 @@ public class App {
 	}
 
 	
-	
-
-
-	public App(String name, String description, int users, int points) {
+	public App(int ownerId, String name, String description, int users, int points) {
 		super();
+		this.ownerId = ownerId;
 		this.name = name;
 		this.description = description;
 		this.users = users;
@@ -25,20 +24,15 @@ public class App {
 	}
 
 
-
-
-
-	public App(int id, String name, String description, int users, int points) {
+	public App(int id, int ownerId, String name, String description, int users, int points) {
 		super();
 		this.id = id;
+		this.ownerId = ownerId;
 		this.name = name;
 		this.description = description;
 		this.users = users;
 		this.points = points;
 	}
-
-
-
 
 
 	public int getId() {
@@ -48,6 +42,16 @@ public class App {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public int getOwnerId() {
+		return ownerId;
+	}
+
+
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 
 
@@ -75,18 +79,10 @@ public class App {
 	public void setUsers(int users) {
 		this.users = users;
 	}
-
-
-
-
-
+	
 	public int getPoints() {
 		return points;
 	}
-
-
-
-
 
 	public void setPoints(int points) {
 		this.points = points;

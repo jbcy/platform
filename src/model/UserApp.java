@@ -15,6 +15,15 @@ public class UserApp {
 
 	
 
+	public UserApp(int userId, int appId, Date joinDate) {
+		super();
+		this.userId = userId;
+		this.appId = appId;
+		this.joinDate = joinDate;
+	}
+
+
+
 	public UserApp(int id, int userId, int appId, Date joinDate) {
 		super();
 		this.id = id;

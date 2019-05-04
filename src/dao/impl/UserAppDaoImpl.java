@@ -23,7 +23,7 @@ public class UserAppDaoImpl implements UserAppDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			int result = statement.executeUpdate("INSERT INTO users_apps (id, user_id, app_id, join_time) VALUES (null, "
+			int result = statement.executeUpdate("INSERT INTO users_apps (id, user_id, app_id, join_date) VALUES (null, "
 					+ userApp.getUserId() + ", "
 					+ userApp.getAppId() + ", '"
 					+ new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(userApp.getJoinDate()) + "')");

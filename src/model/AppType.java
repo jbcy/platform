@@ -43,4 +43,21 @@ public class AppType {
 		this.all = all;
 	}
 	
+	public App checkJoined(int id) {
+		for (int i = 0; i < joined.size(); i++) {
+			if (joined.get(i).getId() == id) {
+				return joined.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public App getApp(int id) {
+		for (int i = 0; i < all.size(); i++) {
+			if (all.get(i).getId() == id) {
+				return all.get(i);
+			}
+		}
+		return null;
+	}
 }
