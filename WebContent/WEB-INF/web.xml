@@ -54,7 +54,7 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  
+
   <servlet>
     <servlet-name>ChangePasswordServlet</servlet-name>
     <servlet-class>servlet.ChangePasswordServlet</servlet-class>
@@ -80,5 +80,13 @@
   <servlet-mapping>
     <servlet-name>AppSelection</servlet-name>
     <url-pattern>/appSelection</url-pattern>
+  </servlet-mapping>
+   <servlet>
+   <servlet-name>ResetPasswordServlet</servlet-name>
+    <servlet-class>servlet.ResetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetPasswordServlet</servlet-name>
+    <url-pattern>/resetPass</url-pattern>
   </servlet-mapping>
 </web-app>

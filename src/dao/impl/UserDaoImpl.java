@@ -220,6 +220,43 @@ public class UserDaoImpl implements UserDao {
 			}
 		return "Error";
 		}
-	 
+
+	 @Override
+		public boolean resetPassword(String email, String generated) {
+			Statement conne = null;
+			 String pass=generatePass(generated);
+
+			
+			try {
+				conne = JdbcUtils.getConnection().createStatement();
+				
+				
+			    String sql = "UPDATE users SET password='" 
+									+ pass +  "' where email='" + email+"'";
+			    int result = conne.executeUpdate(sql);
+			    System.out.println(result);
+			    if(result!=0)
+			    {
+			    return true;	
+			    }
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				if (conne != null) {
+					try {
+						
+						conne.close(); 
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			
+			}
+		return false;
+		}
 	 
 }
