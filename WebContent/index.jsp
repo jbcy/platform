@@ -49,6 +49,7 @@
 </div>
 
   <div class="w3-content">
+  
     <h1 class="w3-text-grey w3-center"><b>Welcome back!</b></h1>
     <form class="w3-container" action="login" method="post" >
 	<label>Email</label>
@@ -59,9 +60,9 @@
 	<div class="w3-center w3-padding-16">
 	<button class="w3-button w3-black w3-center" type="submit" name="btn" value="l">Log in</button>
 	</div>
-	
 	</form>
   </div>
+  <a href="${pageContext.request.servletContext.contextPath}/resetPass" class="w3-display-bottommiddle">Forgot your password?</a>
 </div>
 
 <!-- Registration section -->
