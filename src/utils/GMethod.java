@@ -1,16 +1,17 @@
 package utils;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.UUID;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import model.App;
-import service.TransactionImpl;
+import java.util.UUID;
+
 
 /**
  * For General method
@@ -18,8 +19,10 @@ import service.TransactionImpl;
  *
  */
 public class GMethod {
-	
-//	private static String destdir = "/Users/Batawar/Desktop/Github/test/SecondHand";
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"; 
+	private static final String URL = "jdbc:mysql://localhost:3307/";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
 
 	/**
 	 * Whenever need to insert new item to database, use this function to generate id
@@ -30,25 +33,90 @@ public class GMethod {
 		return UUID.randomUUID().toString();
 	}
 	
-//	public static void main(String[] args) throws IOException { 
-//		JarFile jarfile = new JarFile(jarpath);
-//		for (Enumeration<JarEntry> iter = jarfile.entries(); iter.hasMoreElements();) {
-//			JarEntry entry = iter.nextElement(); 
-//			System.out.println("Processing: " + entry.getName()); 
-//			File outfile = new File(destdir, entry.getName());
-//			if (! outfile.exists())
-//			outfile.getParentFile().mkdirs();
-//			if (! entry.isDirectory()) {
-//		      InputStream instream = jarfile.getInputStream(entry);
-//		      FileOutputStream outstream = new FileOutputStream(outfile);
-//		    while (instream.available() > 0) {
-//	          outstream.write(instream.read());
-//	      }
-//	      outstream.close();
-//	      instream.close();
-//	    }  // end if
-//	} //endfor
-//	  jarfile.close();
-//	}  // end main
+	public static void createDatabase(String name, String file) throws ClassNotFoundException, SQLException, IOException {
+		Connection conn = null;
+		Statement stmt = null;
+		Class.forName("com.mysql.jdbc.Driver");
 
+	    System.out.println("Connecting to database...");
+	    conn = DriverManager.getConnection(URL, USER, PASSWORD);
+
+	    System.out.println("Creating database...");
+	    stmt = conn.createStatement();
+		
+		String sql = "create DATABASE " + name;
+		stmt.executeUpdate(sql);
+		System.out.println("Database created successfully...");
+		sql = "use " + name;
+		stmt.executeUpdate(sql);
+		String s = new String();
+     StringBuffer sb = new StringBuffer();
+     FileReader fr = new FileReader(new File(file));
+     BufferedReader br = new BufferedReader(fr);
+		
+     while((s = br.readLine()) != null)
+     {
+         sb.append(s);
+     }
+     br.close();
+
+     String[] inst = sb.toString().split(";");
+     
+     for(int i = 0; i<inst.length; i++)
+     {
+         // we ensure that there is no spaces before or after the request string
+         // in order to not execute empty statements
+         if(!inst[i].trim().equals(""))
+         {
+             stmt.executeUpdate(inst[i]);
+             
+             System.out.println(">>"+inst[i]);
+         }
+     }
+	}  
 }
+//	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException { 
+//		Connection conn = null;
+//		   Statement stmt = null;
+//		 Class.forName("com.mysql.jdbc.Driver");
+//
+//	      //STEP 3: Open a connection
+//	      System.out.println("Connecting to database...");
+//	      conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//
+//	      //STEP 4: Execute a query
+//	      System.out.println("Creating database...");
+//	      stmt = conn.createStatement();
+//		String sql = "drop DATABASE secondhand";
+//		stmt.executeUpdate(sql);
+//		sql = "create DATABASE secondhand";
+//		stmt.executeUpdate(sql);
+//		System.out.println("Database created successfully...");
+//		sql = "use secondhand";
+//		stmt.executeUpdate(sql);
+//		String s = new String();
+//        StringBuffer sb = new StringBuffer();
+//        FileReader fr = new FileReader(new File("/Users/Batawar/Desktop/Github/test/uploadedFiles/secondhand_Products.sql"));
+//        BufferedReader br = new BufferedReader(fr);
+//		
+//        while((s = br.readLine()) != null)
+//        {
+//            sb.append(s);
+//        }
+//        br.close();
+//
+//        String[] inst = sb.toString().split(";");
+//        
+//        for(int i = 0; i<inst.length; i++)
+//        {
+//            // we ensure that there is no spaces before or after the request string
+//            // in order to not execute empty statements
+//            if(!inst[i].trim().equals(""))
+//            {
+//                stmt.executeUpdate(inst[i]);
+//                System.out.println(">>"+inst[i]);
+//            }
+//        }
+//	}  
+
+

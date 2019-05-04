@@ -9,9 +9,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-</style>
+<link rel="stylesheet" href="./style/home.css">
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 <!-- Sidebar/menu -->
 <jsp:useBean id="user" type="model.User" scope="session"/>
@@ -27,8 +25,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     
   </div>
   <div class="w3-bar-block">
-    <a href="/JBCY/Profile" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a> 
+    <a href="/JBCY/Profile" onclick="w3_close()" class="w3-bar-item w3-button w3-padding "><i class="fa fa-th-large fa-fw w3-margin-right"></i>Home</a> 
     <a href="/JBCY/Profile" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Memory</a> 
+    <a href="jsp/uploadAppPage.jsp" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-star fa-fw w3-margin-right"></i>Upload</a>
     <a href="/JBCY/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Logout</a>
   </div>
   
@@ -58,7 +57,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		<label>Description</label>
 		<input class="w3-input" type="text" id="description" name="description">
 		<label>How many peanut points it will cost</label>
-		<input class="w3-input" type="text" id="points" name="points">
+		<input class="w3-input" type="number" id="points" name="points">
+		<label>Name of Your Database</label>
+		<input class="w3-input" type="text" id="database" name="database">
+		<label>Your .sql file</label>
+		<input class="w3-input" type="file" id="sql" name="sql" size="60">
 		<label>Your app's war</label>
 		<input class="w3-input" type="file" id="app" name="app" size="60">
 		<div class="w3-center w3-padding-16">
@@ -68,37 +71,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 	</form>
     
   </div>
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-dark-grey">
-  <div class="w3-row-padding">
-    <div class="w3-third">
-      <h3>FOOTER</h3>
-      <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      <p>Powered by team 13</p>
-    </div>
   
-    <div class="w3-third">
-      <h3>Extra Function</h3>
-      <ul class="w3-ul w3-hoverable">
-       <li class="w3-padding-16">
-	         <a href="uploadApp.jsp">
-	          <span class="w3-large">Upload your own apps</span><br>
-	          <span>Upload your own apps to gain more peanut points</span></a>
-	        </li>
-        <li class="w3-padding-16">
-          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">Ipsum</span><br>
-          <span>Praes tinci sed</span>
-        </li> 
-      </ul>
-    </div>
-
-   
-
-  </div>
-  </footer>
   
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
+  <div class="w3-black w3-center w3-padding-24 w3-display-bottommiddle">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
 
 <!-- End page content -->
 </div>

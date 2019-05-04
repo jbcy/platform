@@ -9,10 +9,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-</style>
-
+<link rel="stylesheet" href="./style/home.css">
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 <!-- Sidebar/menu -->
 <jsp:useBean id="user" type="model.User" scope="session"/>
@@ -31,7 +28,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-home fa-fw w3-margin-right"></i>Home</a> 
     <a href="#memory" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Memory</a> 
+    <a href="jsp/uploadAppPage.jsp" class="w3-bar-item w3-button w3-padding"><i class="fa fa-star fa-fw w3-margin-right"></i>Upload</a>
     <a href="${pageContext.request.servletContext.contextPath}/logout" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Log out</a>
+
   </div>
   
 </nav>
@@ -79,7 +78,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     	<div class="w3-third w3-container w3-margin-bottom" id=<%= item.getId() %> onclick="app_select(<%= item.getId() %>)" >
 		      
 		      <div class="w3-container w3-white">
-		        <p><b><%= item.getName() %></b></p>
+		        <p><b><%= item.getName() %> (<%= item.getPoints() %>)</b></p>
 		        <p><%= item.getDescription() %></p>
 		      </div>
 		    </div> 
@@ -152,7 +151,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-dark-grey">
+<!-- <footer class="w3-container w3-padding-32 w3-dark-grey">
 	<div class="w3-row-padding">
 	   <div class="w3-third">
 	      <h3>FOOTER</h3>
@@ -175,7 +174,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 	      </ul>
 	    </div>
 	</div>
-</footer>
+</footer> -->
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
 </div>
 
