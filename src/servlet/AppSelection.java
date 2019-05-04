@@ -54,8 +54,12 @@ public class AppSelection extends HttpServlet {
 			tran.insertUserApp(new UserApp(user.getId(), appId, new Date()));
 		} 
 		//response.sendRedirect("http://localhost:8080/HelloServlet/");
+		if (temp.getName().equals("ServletDBLog4jExample")) {
+			response.sendRedirect("http://localhost:8080/" + temp.getName() + "/home.jsp");
+		} else {
+			response.sendRedirect("http://localhost:8080/" + temp.getName() + "/enter?id=" + user.getId() + "&email=" + user.getEmail() + "&name=" + user.getName());
+		}
 		
-		response.sendRedirect("http://localhost:8080/" + temp.getName() + "/enter?id=" + user.getId() + "&email=" + user.getEmail() + "&name=" + user.getName());
 		
 	}
 	

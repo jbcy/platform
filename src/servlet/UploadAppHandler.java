@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -21,6 +22,7 @@ import model.App;
 import model.Peanut;
 import model.User;
 import service.TransactionImpl;
+import utils.GMethod;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*2,
 maxFileSize=1024*1024*10,
@@ -38,8 +40,8 @@ public class UploadAppHandler extends HttpServlet {
 		int points = Integer.parseInt(request.getParameter("points"));
 		if (new TransactionImpl().findAppByName(name) == null) {
 			// Get absolute path of this running web application
-			String appPath = request.getServletContext().getRealPath("");
-			//String appPath = "/Users/Batawar/Desktop/Github/test";
+			//String appPath = request.getServletContext().getRealPath("");
+			String appPath = "/Users/Batawar/Desktop/Github/test";
 			// Create path to the directory to save uploaded file
 			String savePath = appPath + File.separator + SAVE_DIR;
 			// Create the save directory if it does not exist
@@ -50,9 +52,19 @@ public class UploadAppHandler extends HttpServlet {
 			
 			for (Part part : request.getParts()) {
 				  String fileName = extractFileName(part);
-				  if (!fileName.equals("")) {
+				  if (fileName.indexOf(".war") != -1) {
 					  part.write(savePath + File.separator + fileName);
 					  extractor(fileName);
+				  } else if (fileName.indexOf(".sql") != -1) {
+					  try {
+						GMethod.createDatabase(fileName.substring(0, fileName.length() - 4), savePath + File.separator + fileName);
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				  }
 				 
 			}
