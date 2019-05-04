@@ -33,10 +33,10 @@ public class AppSelection extends HttpServlet {
 		AppType apps = (AppType) session.getAttribute("apps");
 		TransactionImpl tran = new TransactionImpl();
 		App temp = apps.checkJoined(appId);
-		Map<String, String> map = new HashMap<>();
-		map.put("userId", String.valueOf(user.getId()));
-		map.put("userName", user.getName());
-		map.put("userEmail", user.getEmail());
+//		Map<String, String> map = new HashMap<>();
+//		map.put("userId", String.valueOf(user.getId()));
+//		map.put("userName", user.getName());
+//		map.put("userEmail", user.getEmail());
 		if (temp == null) {
 			temp = apps.getApp(appId);
 			apps.getJoined().add(temp);
@@ -45,14 +45,17 @@ public class AppSelection extends HttpServlet {
 			Peanut peanut = (Peanut) session.getAttribute("peanut");
 			peanut.setPoints(peanut.getPoints() - temp.getPoints());
 			tran.updatePeanut(peanut);
-			Peanut ownerP = tran.findPeanut(temp.getOwnerId());
-			ownerP.setPoints(ownerP.getPoints() + temp.getPoints());
-			tran.updatePeanut(ownerP);
+			if (temp.getOwnerId() != 0) {
+				Peanut ownerP = tran.findPeanut(temp.getOwnerId());
+				ownerP.setPoints(ownerP.getPoints() + temp.getPoints());
+				tran.updatePeanut(ownerP);
+			}
+			
 			tran.insertUserApp(new UserApp(user.getId(), appId, new Date()));
 		} 
-		response.sendRedirect("http://localhost:8080/HelloServlet/");
+		//response.sendRedirect("http://localhost:8080/HelloServlet/");
 
-		//response.sendRedirect("localhost:8080/" + temp.getName() + "/enter?user=" + map);
+		response.sendRedirect("localhost:8080/" + temp.getName() + "/enter?userId=" + user.getId());
 		
 	}
 	
