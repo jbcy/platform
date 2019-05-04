@@ -43,9 +43,8 @@ public class GMethod {
 
 	    System.out.println("Creating database...");
 	    stmt = conn.createStatement();
-		String sql = "drop DATABASE " + name;
-		stmt.executeUpdate(sql);
-		sql = "create DATABASE " + name;
+		
+		String sql = "create DATABASE " + name;
 		stmt.executeUpdate(sql);
 		System.out.println("Database created successfully...");
 		sql = "use " + name;
@@ -70,6 +69,7 @@ public class GMethod {
          if(!inst[i].trim().equals(""))
          {
              stmt.executeUpdate(inst[i]);
+             
              System.out.println(">>"+inst[i]);
          }
      }

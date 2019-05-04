@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -20,6 +21,7 @@ import javax.servlet.http.Part;
 
 import model.App;
 import model.Peanut;
+import model.Record;
 import model.User;
 import service.TransactionImpl;
 import utils.GMethod;
@@ -38,6 +40,7 @@ public class UploadAppHandler extends HttpServlet {
 		String name = request.getParameter("name");
 		String description = request.getParameter("description");
 		int points = Integer.parseInt(request.getParameter("points"));
+		String databaseName = request.getParameter("database");
 		if (new TransactionImpl().findAppByName(name) == null) {
 			// Get absolute path of this running web application
 			//String appPath = request.getServletContext().getRealPath("");
@@ -54,10 +57,11 @@ public class UploadAppHandler extends HttpServlet {
 				  String fileName = extractFileName(part);
 				  if (fileName.indexOf(".war") != -1) {
 					  part.write(savePath + File.separator + fileName);
-					  extractor(fileName);
+					  //extractor(fileName);
 				  } else if (fileName.indexOf(".sql") != -1) {
 					  try {
-						GMethod.createDatabase(fileName.substring(0, fileName.length() - 4), savePath + File.separator + fileName);
+						part.write(savePath + File.separator + fileName);
+						GMethod.createDatabase(databaseName, savePath + File.separator + fileName);
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -70,7 +74,7 @@ public class UploadAppHandler extends HttpServlet {
 			}
 			TransactionImpl tran = new TransactionImpl();
 			tran.insertApp(new App(((User) session.getAttribute("user")).getId(), name, description, 0, points));
-			
+			tran.insertRecord(new Record(((User) session.getAttribute("user")).getId(), "General", "Upload a new app: " + name, new Date()));
 			session.removeAttribute("status");
 			getServletContext().getRequestDispatcher("/jsp/status.jsp").include(request, response);
 		} else {

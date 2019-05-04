@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import model.App;
 import model.AppType;
 import model.Peanut;
+import model.Record;
 import model.User;
 import model.UserApp;
 import service.TransactionImpl;
@@ -52,7 +53,10 @@ public class AppSelection extends HttpServlet {
 			}
 			
 			tran.insertUserApp(new UserApp(user.getId(), appId, new Date()));
-		} 
+			tran.insertRecord(new Record(user.getId(), temp.getName(), "Join the app and consume " + temp.getPoints() + "points" , new Date()));
+		} else {
+			tran.insertRecord(new Record(user.getId(), temp.getName(), "Enter " + temp.getName(), new Date()));
+		}
 		//response.sendRedirect("http://localhost:8080/HelloServlet/");
 		if (temp.getName().equals("ServletDBLog4jExample")) {
 			response.sendRedirect("http://localhost:8080/" + temp.getName() + "/home.jsp");
