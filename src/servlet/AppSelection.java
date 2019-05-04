@@ -54,8 +54,8 @@ public class AppSelection extends HttpServlet {
 			tran.insertUserApp(new UserApp(user.getId(), appId, new Date()));
 		} 
 		//response.sendRedirect("http://localhost:8080/HelloServlet/");
-
-		response.sendRedirect("localhost:8080/" + temp.getName() + "/enter?userId=" + user.getId());
+		
+		response.sendRedirect("http://localhost:8080/" + temp.getName() + "/enter?id=" + user.getId() + "&email=" + user.getEmail() + "&name=" + user.getName());
 		
 	}
 	
