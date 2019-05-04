@@ -9,5 +9,5 @@ public interface AppDao {
 	App findByName(String name);
 	App findById(int id);
 	List<App> findAll();
-	void update(App app);
+	void update(int id);
 }

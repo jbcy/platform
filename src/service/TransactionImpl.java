@@ -44,7 +44,7 @@ public class TransactionImpl implements Transaction {
 	@Override
 	public void insertUserApp(UserApp userApp) {
 		userAppDao.insert(userApp);
-		
+		updateApp(userApp.getAppId());
 	}
 
 	@Override
@@ -113,8 +113,8 @@ public class TransactionImpl implements Transaction {
 
 	
 	@Override
-	public void updateApp(App app) {
-		appDao.update(app);
+	public void updateApp(int id) {
+		appDao.update(id);
 	}
 
 	@Override

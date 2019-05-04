@@ -12,11 +12,13 @@
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
+
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 <!-- Sidebar/menu -->
 <jsp:useBean id="user" type="model.User" scope="session"/>
 <jsp:useBean id="peanut" type="model.Peanut" scope="session"/>
 <jsp:useBean id="apps" class="model.AppType" scope="session"/>
+
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container">
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
@@ -48,7 +50,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <%@ page import="model.App" %>
     <h1><b><jsp:getProperty name="apps" property="type"/> Apps</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
-    <form action="change" method="GET">
+    <form action="appType" method="GET">
       <span class="w3-margin-right">Filter:</span> 
       <button name="all" class="w3-button w3-white">ALL</button>
       <button name="newForMe" class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>New for me</button>
@@ -73,8 +75,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     	}
     	for (App item : list) {
     %>
-    
-    	<div class="w3-third w3-container w3-margin-bottom">
+    	
+    	<div class="w3-third w3-container w3-margin-bottom" id=<%= item.getId() %> onclick="app_select(<%= item.getId() %>)" >
 		      
 		      <div class="w3-container w3-white">
 		        <p><b><%= item.getName() %></b></p>
@@ -111,11 +113,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		      </div>
 		    </div> 
 		<% } %>
-    
-    
-    
     <hr>
-    
   </div>
   <!-- profile Section -->
   <div class="w3-container w3-padding-large w3-grey">
@@ -138,11 +136,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   <span>${messages}</span>
 </div>
-    <h3>Change password</h3>
-    
-    
-     <form class="w3-container" action="changePass" method="post" >
-	
+    <h3>Change password</h3>  
+     <form class="w3-container" action="changePass" method="post" >	
 	<label>Old Password</label>
 	<input class="w3-input" type="password" id="password" name="password">
 	<label>New Password</label>
@@ -151,26 +146,46 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 	<input class="w3-input" type="password" id="rpassword" name="rpassword">
 	<div class="w3-center w3-padding-16">
 	<button class="w3-button w3-black w3-center" type="submit" name="btn" >Change</button>
-	</div>
-	
-	</form>
-    
+	</div>	
+	</form> 
     
   </div>
 
-
- 
-
   <!-- Footer -->
-
-  
+<footer class="w3-container w3-padding-32 w3-dark-grey">
+	<div class="w3-row-padding">
+	   <div class="w3-third">
+	      <h3>FOOTER</h3>
+	      <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+	      <p>Powered by team 13</p>
+	    </div>
+	    <div class="w3-third">
+	      <h3>Extra Function</h3>
+	      <ul class="w3-ul w3-hoverable">
+	        <li class="w3-padding-16">
+	         <a href="jsp/uploadAppPage.jsp">
+	          <span class="w3-large">Upload your own apps</span><br>
+	          <span>Upload your own apps to gain more peanut points</span></a>
+	        </li>
+	        <li class="w3-padding-16">
+	          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+	          <span class="w3-large">Ipsum</span><br>
+	          <span>Praes tinci sed</span>
+	        </li> 
+	      </ul>
+	    </div>
+	</div>
+</footer>
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
-
-<!-- End page content -->
 </div>
 
 <script>
 // Script to open and close sidebar
+function app_select(id) {
+	location.href = "appSelection"+"?appId="+id;
+	
+	
+}
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";

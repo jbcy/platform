@@ -27,7 +27,7 @@ public interface Transaction {
 	List<User> findAppUsers(int appId);
 	
 	void updatePeanut(Peanut peanut);
-	void updateApp(App app);
+	void updateApp(int id);
 	void updateRecord(Record record);
 	
 }
