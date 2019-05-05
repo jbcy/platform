@@ -43,8 +43,8 @@ public class UploadAppHandler extends HttpServlet {
 		String databaseName = request.getParameter("database");
 		if (new TransactionImpl().findAppByName(name) == null) {
 			// Get absolute path of this running web application
-			//String appPath = request.getServletContext().getRealPath("");
-			String appPath = "/Users/Batawar/Desktop/Github/test";
+			String appPath = request.getServletContext().getRealPath("");
+			//String appPath = "/Users/Batawar/Desktop/Github/test";
 			// Create path to the directory to save uploaded file
 			String savePath = appPath + File.separator + SAVE_DIR;
 			// Create the save directory if it does not exist
@@ -57,7 +57,7 @@ public class UploadAppHandler extends HttpServlet {
 				  String fileName = extractFileName(part);
 				  if (fileName.indexOf(".war") != -1) {
 					  part.write(savePath + File.separator + fileName);
-					  //extractor(fileName);
+					  extractor(fileName);
 				  } else if (fileName.indexOf(".sql") != -1) {
 					  try {
 						part.write(savePath + File.separator + fileName);

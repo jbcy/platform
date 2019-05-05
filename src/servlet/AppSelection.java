@@ -53,9 +53,11 @@ public class AppSelection extends HttpServlet {
 			}
 			
 			tran.insertUserApp(new UserApp(user.getId(), appId, new Date()));
-			tran.insertRecord(new Record(user.getId(), temp.getName(), "Join the app and consume " + temp.getPoints() + "points" , new Date()));
+			tran.insertRecord(new Record(user.getId(), temp.getName(), "Join the app and consume " + temp.getPoints() + " points" , new Date()));
+			System.out.println("Join the app and consume " + temp.getPoints() + " points" );
 		} else {
 			tran.insertRecord(new Record(user.getId(), temp.getName(), "Enter " + temp.getName(), new Date()));
+			System.out.println("Enter " + temp.getName());
 		}
 		//response.sendRedirect("http://localhost:8080/HelloServlet/");
 		if (temp.getName().equals("ServletDBLog4jExample")) {

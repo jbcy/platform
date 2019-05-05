@@ -101,17 +101,21 @@
     <%@ page import="model.Record" %>
     <% 
     	List<Record> temp = (List<Record>) session.getAttribute("records");
-    	for (Record item : temp) {
+    	for (int i = temp.size() - 1; i >= 0; i--) {
     %>
     
     	<div class="w3-third w3-container w3-margin-bottom">
 		      
 		      <div class="w3-container w3-white">
-		        <p><b><%= item.getStatement() %></b></p>
-		        <p><%= item.getTime() %></p>
+		        <p><b><%= temp.get(i).getStatement() %></b></p>
+		        <p><%= temp.get(i).getTime() %></p>
 		      </div>
 		    </div> 
-		<% } %>
+		<% if (temp.size() > 6 && i <= temp.size() - 7) {
+			break;
+			}
+		} %>
+		
     <hr>
   </div>
   <!-- profile Section -->
