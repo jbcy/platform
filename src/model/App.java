@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * The entity to store app's data
+ * @author Jingbo Lin
+ * @version %I%, %G%
+ * @since 1.0
+ */
 public class App {
 	private int id;
 	private int ownerId;
@@ -8,12 +14,20 @@ public class App {
 	private int users = 0;
 	private int points;
 	
+	
 	public App() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	/**
+	 * constructor of App entity
+	 * @param ownerId
+	 * @param name
+	 * @param description
+	 * @param users
+	 * @param points
+	 */
 	public App(int ownerId, String name, String description, int users, int points) {
 		super();
 		this.ownerId = ownerId;
@@ -23,7 +37,15 @@ public class App {
 		this.points = points;
 	}
 
-
+	/**
+	 * constructor of App entity
+	 * @param id
+	 * @param ownerId
+	 * @param name
+	 * @param description
+	 * @param users
+	 * @param points
+	 */
 	public App(int id, int ownerId, String name, String description, int users, int points) {
 		super();
 		this.id = id;
@@ -34,22 +56,35 @@ public class App {
 		this.points = points;
 	}
 
-
+	/**
+	 * get function for app id
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
 
 
+	/**
+	 * set function for app id
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
+	/**
+	 * get function for owner id (user id)
+	 * @return
+	 */
 	public int getOwnerId() {
 		return ownerId;
 	}
 
-
+	/**
+	 * 
+	 * @param ownerId
+	 */
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}

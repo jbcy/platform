@@ -20,9 +20,9 @@ import java.util.UUID;
  */
 public class GMethod {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"; 
-	private static final String URL = "jdbc:mysql://localhost:3307/";
+	private static final String URL = "jdbc:mysql://localhost:3306/";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "claudiam";
 
 	/**
 	 * Whenever need to insert new item to database, use this function to generate id
@@ -43,7 +43,6 @@ public class GMethod {
 
 	    System.out.println("Creating database...");
 	    stmt = conn.createStatement();
-		
 		String sql = "create DATABASE " + name;
 		stmt.executeUpdate(sql);
 		System.out.println("Database created successfully...");
@@ -75,48 +74,6 @@ public class GMethod {
      }
 	}  
 }
-//	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException { 
-//		Connection conn = null;
-//		   Statement stmt = null;
-//		 Class.forName("com.mysql.jdbc.Driver");
-//
-//	      //STEP 3: Open a connection
-//	      System.out.println("Connecting to database...");
-//	      conn = DriverManager.getConnection(URL, USER, PASSWORD);
-//
-//	      //STEP 4: Execute a query
-//	      System.out.println("Creating database...");
-//	      stmt = conn.createStatement();
-//		String sql = "drop DATABASE secondhand";
-//		stmt.executeUpdate(sql);
-//		sql = "create DATABASE secondhand";
-//		stmt.executeUpdate(sql);
-//		System.out.println("Database created successfully...");
-//		sql = "use secondhand";
-//		stmt.executeUpdate(sql);
-//		String s = new String();
-//        StringBuffer sb = new StringBuffer();
-//        FileReader fr = new FileReader(new File("/Users/Batawar/Desktop/Github/test/uploadedFiles/secondhand_Products.sql"));
-//        BufferedReader br = new BufferedReader(fr);
-//		
-//        while((s = br.readLine()) != null)
-//        {
-//            sb.append(s);
-//        }
-//        br.close();
-//
-//        String[] inst = sb.toString().split(";");
-//        
-//        for(int i = 0; i<inst.length; i++)
-//        {
-//            // we ensure that there is no spaces before or after the request string
-//            // in order to not execute empty statements
-//            if(!inst[i].trim().equals(""))
-//            {
-//                stmt.executeUpdate(inst[i]);
-//                System.out.println(">>"+inst[i]);
-//            }
-//        }
-//	}  
+
 
 

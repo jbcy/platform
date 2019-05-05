@@ -12,11 +12,16 @@ public class JdbcUtils {
 	// Change DB_URL to your machine's port (mostly change from 3307 to 3306)
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/jbcy";
 	private static final String user = "root";
-	private static final String password = "root";
+	private static final String password = "claudiam";
 	
 	static {
 		try {
-			
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			con = DriverManager.getConnection(DB_URL, user, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -20,10 +20,16 @@ import utils.JdbcUtils;
  * @author Jingbo Lin
  * @version %I%, %G%
  * @since 1.0
- * @see model.App
+ * @see model.Record
  */
 public class RecordDaoImpl implements RecordDao {
 
+	/**
+	 * Add a Record to the "records" table. It will be called when user has any new activity
+	 * @param peanut 	an instance of Peanut entity which store uploaded peanut data
+	 * @see model.Record
+	 * @since 1.0
+	 */
 	@Override
 	public void insert(Record record) {
 
@@ -53,6 +59,16 @@ public class RecordDaoImpl implements RecordDao {
 
 	}
 
+	/**
+	 * Retrieve records data from database by searching its userId and the time section 
+	 * @param userId 	an integer that represent userId
+	 * @param startDate	start date of time section
+	 * @param endDate	end date of time section
+	 * @return 		if there are relevant records in the database then return a list of
+	 * 				Record instance otherwise return null
+	 * @see model.Record
+	 * @since 1.0
+	 */
 	@Override
 	public List<Record> findByTime(int userId, Date startDate, Date endDate) {
 		Statement statement = null;
@@ -90,6 +106,15 @@ public class RecordDaoImpl implements RecordDao {
 		return result;
 	}
 
+	/**
+	 * Retrieve records data from database by searching its userId and its type 
+	 * @param userId 	an integer that represent userId
+	 * @param type		a String that represent record type
+	 * @return 		if there are relevant records in the database then return a list of
+	 * 				Record instance otherwise return null
+	 * @see model.Record
+	 * @since 1.0
+	 */
 	@Override
 	public List<Record> findByType(int userId, String type) {
 		Statement statement = null;
@@ -126,7 +151,13 @@ public class RecordDaoImpl implements RecordDao {
 		return result;
 	}
 	
-	
+	/**
+	 * Retrieve all records data from database
+	 * @return 		if there is any records in the database then return a list of
+	 * 				Record instance otherwise return null
+	 * @see model.Record
+	 * @since 1.0
+	 */
 	@Override
 	public List<Record> findAll(int userId) {
 		Statement statement = null;

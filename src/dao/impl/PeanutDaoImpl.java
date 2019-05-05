@@ -15,10 +15,16 @@ import utils.JdbcUtils;
  * @author Jingbo Lin
  * @version %I%, %G%
  * @since 1.0
- * @see model.App
+ * @see model.Peanut
  */
 public class PeanutDaoImpl implements PeanutDao {
 	
+	/**
+	 * Add a peanut bank to the "peanuts" table. It will be called when user finish registration
+	 * @param peanut 	an instance of Peanut entity which store uploaded peanut data
+	 * @see model.Peanut
+	 * @since 1.0
+	 */
 	@Override
 	public void insert(Peanut peanut) {
 		Statement statement = null;
@@ -43,7 +49,15 @@ public class PeanutDaoImpl implements PeanutDao {
 		}
 
 	}
-
+	
+	/**
+	 * Retrieve peanut data from database by searching its user_id 
+	 * @param userId 	an integer which represent userId
+	 * @return 			if there is already a peanut in the database then return a 
+	 * 					Peanut instance otherwise return null
+	 * @see model.Peanut
+	 * @since 1.0
+	 */
 	@Override
 	public Peanut find(int userId) {
 		Statement statement = null;
@@ -71,6 +85,13 @@ public class PeanutDaoImpl implements PeanutDao {
 		return peanut;
 	}
 
+	
+	/**
+	 * update specific peanut data from database by its id
+	 * @param peanut 	an instance that represent peanut which need to be update
+	 * @see model.Peanut
+	 * @since 1.0
+	 */
 	@Override
 	public void update(Peanut peanut) {
 		Statement statement = null;

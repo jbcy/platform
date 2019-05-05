@@ -53,9 +53,9 @@
      <form class="w3-container" action="/JBCY/uploadApp" method="POST" enctype="multipart/form-data">
 		
 		<label>Name</label>
-		<input class="w3-input" type="text" id="name" name="name">
+		<input class="w3-input" type="text" id="name" name="name" maxlength="20">
 		<label>Description</label>
-		<input class="w3-input" type="text" id="description" name="description">
+		<input class="w3-input" type="text" id="description" name="description" maxlength="80">
 		<label>How many peanut points it will cost</label>
 		<input class="w3-input" type="number" id="points" name="points">
 		<label>Name of Your Database</label>
@@ -73,11 +73,11 @@
   </div>
   
   
-<<<<<<< HEAD
+
   <div class="w3-black w3-center w3-padding-24 w3-display-bottom">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
-=======
+
   <div class="w3-black w3-center w3-padding-24 footerUpload">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
->>>>>>> 5f9d6a09bf31add1aba7aab32e775ea718d3f7e4
+
 
 <!-- End page content -->
 </div>

@@ -32,8 +32,8 @@ maxRequestSize=1024*1024*50)
 public class UploadAppHandler extends HttpServlet {
 
 	private static final String SAVE_DIR = "uploadedFiles";
-	private static String jarpath = "/usr/local/Cellar/tomcat@8/8.5.38/libexec/webapps/JBCY/uploadedFiles/"; 
-	private static String destdir = "/usr/local/Cellar/tomcat@8/8.5.38/libexec/webapps/";
+	private static String jarpath = "/var/lib/tomcat8/webapps/JBCY/uploadedFiles/"; 
+	private static String destdir = "/var/lib/tomcat8/webapps/";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();

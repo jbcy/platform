@@ -18,10 +18,19 @@ import utils.JdbcUtils;
  * The implementation UserAppDao interface which allow user to access the "users_apps" table
  * in "jbcy" database and manipulate it.
  * @author Jingbo Lin
- *
+ * @version %I%, %G%
+ * @since 1.0
+ * @see model.UserApp
  */
 public class UserAppDaoImpl implements UserAppDao {
 
+	/**
+	 * Add the user_app to the "users_apps" table. It will be called when user join the
+	 * app for the first time
+	 * @param userApp 	an instance of UserApp entity which store uploaded userApp data
+	 * @see model.UserApp
+	 * @since 1.0
+	 */
 	@Override
 	public void insert(UserApp userApp) {
 		
@@ -48,7 +57,14 @@ public class UserAppDaoImpl implements UserAppDao {
 		}
 		
 	}
-
+	/**
+	 * Retrieve App data from database by user's id 
+	 * @param userId 	an integer that represent userId
+	 * @return 			if there are relevant data in the database then return a list of
+	 * 					App instance otherwise return null
+	 * @see model.UserApp
+	 * @since 1.0
+	 */
 	@Override
 	public List<App> findByUser(int userId) {
 		Statement statement = null;
@@ -81,6 +97,14 @@ public class UserAppDaoImpl implements UserAppDao {
 		
 	}
 
+	/**
+	 * Retrieve App data from database by user's id 
+	 * @param appId 	an integer that represent appId
+	 * @return 			if there are relevant data in the database then return a list of
+	 * 					User instance otherwise return null
+	 * @see model.UserApp
+	 * @since 1.0
+	 */
 	@Override
 	public List<User> findByApp(int appId) {
 		Statement statement = null;

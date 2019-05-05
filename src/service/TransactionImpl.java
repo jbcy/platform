@@ -38,6 +38,7 @@ public class TransactionImpl implements Transaction {
 	@Override
 	public void insertApp(App app) {
 		appDao.insert(app);
+		System.out.println("Upload App");
 		
 	}
 
@@ -92,9 +93,12 @@ public class TransactionImpl implements Transaction {
 	@Override
 	public List<App> findUserApps(int userId) {
 		List<App> list = userAppDao.findByUser(userId);
-		for (int i = 0; i < list.size(); i++) {
-			list.set(i, findAppById(list.get(i).getId()));
-		}	
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				list.set(i, findAppById(list.get(i).getId()));
+			}	
+		}
+		
 		return list;
 	}
 

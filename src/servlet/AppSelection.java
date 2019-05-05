@@ -34,10 +34,7 @@ public class AppSelection extends HttpServlet {
 		AppType apps = (AppType) session.getAttribute("apps");
 		TransactionImpl tran = new TransactionImpl();
 		App temp = apps.checkJoined(appId);
-//		Map<String, String> map = new HashMap<>();
-//		map.put("userId", String.valueOf(user.getId()));
-//		map.put("userName", user.getName());
-//		map.put("userEmail", user.getEmail());
+
 		if (temp == null) {
 			temp = apps.getApp(appId);
 			apps.getJoined().add(temp);
@@ -61,9 +58,9 @@ public class AppSelection extends HttpServlet {
 		}
 		//response.sendRedirect("http://localhost:8080/HelloServlet/");
 		if (temp.getName().equals("ServletDBLog4jExample")) {
-			response.sendRedirect("http://localhost:8080/" + temp.getName() + "/home.jsp");
+			response.sendRedirect("http://143.167.9.222:8080/" + temp.getName() + "/home.jsp");
 		} else {
-			response.sendRedirect("http://localhost:8080/" + temp.getName() + "/enter?id=" + user.getId() + "&email=" + user.getEmail() + "&name=" + user.getName());
+			response.sendRedirect("http://143.167.9.222:8080/" + temp.getName() + "/enter?id=" + user.getId() + "&email=" + user.getEmail() + "&name=" + user.getName());
 		}
 		
 		

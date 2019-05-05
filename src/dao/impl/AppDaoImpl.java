@@ -20,6 +20,12 @@ import utils.JdbcUtils;
  */
 public class AppDaoImpl implements AppDao {
 
+	/**
+	 * Add the app to the "apps" table. It will be called when user upload an app
+	 * @param app 	an instance of App entity which store uploaded app data
+	 * @see model.App
+	 * @since 1.0
+	 */
 	@Override
 	public void insert(App app) {
 		Statement statement = null;
@@ -48,6 +54,14 @@ public class AppDaoImpl implements AppDao {
 
 	}
 
+	/**
+	 * Retrieve app data from database by searching its name 
+	 * @param app 	an instance of App entity which store uploaded app data
+	 * @return 		if there is already an app in the database then return an 
+	 * 				app instance otherwise return null
+	 * @see model.App
+	 * @since 1.0
+	 */
 	@Override
 	public App findByName(String name) {
 		Statement statement = null;
@@ -75,6 +89,13 @@ public class AppDaoImpl implements AppDao {
 		return app;
 	}
 
+	/**
+	 * Retrieve all app data from database 
+	 * @return 		if there are already some apps in the database then return a list 
+	 * 				apps instance otherwise return null
+	 * @see model.App
+	 * @since 1.0
+	 */
 	@Override
 	public List<App> findAll() {
 		Statement statement = null;
@@ -111,6 +132,12 @@ public class AppDaoImpl implements AppDao {
 		return result;
 	}
 
+	/**
+	 * update specific app data from database by its id
+	 * @param id 	an integer that represent app's id
+	 * @see model.App
+	 * @since 1.0
+	 */
 	@Override
 	public void update(int id) {
 		Statement statement = null;
@@ -135,6 +162,16 @@ public class AppDaoImpl implements AppDao {
 
 	}
 
+	
+	/**
+	 * find specific app data from database by its id
+	 * @param id 	an integer that represent app's id
+	 * @return 		if there is already an app have the same id
+	 * 				in the database then return an 
+	 * 				app instance otherwise return null
+	 * @see model.App
+	 * @since 1.0
+	 */
 	@Override
 	public App findById(int id) {
 		Statement statement = null;
