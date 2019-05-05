@@ -11,7 +11,14 @@ import it.cosenonjaviste.crypto.BCrypt;
 import model.App;
 import model.User;
 import utils.JdbcUtils;
-
+/**
+ * The implementation UserDao interface which allow user to access the "users" table
+ * in "jbcy" database and manipulate it.
+ * @author Claudia Gomez
+ * @version %I%, %G%
+ * @since 1.0
+ * @see model.User
+ */
 public class UserDaoImpl implements UserDao {
 
 	

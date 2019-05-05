@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.impl.UserDaoImpl;
 import model.User;
-
+/**
+ * @author Claudia Gomez
+ */
 
 public class ChangePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +27,9 @@ public class ChangePasswordServlet extends HttpServlet {
 
 
 
-
+/**
+ * change the password first validating that the old password correspond to the database one as well and that the 2 new are equal
+ */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session= request.getSession();
@@ -45,11 +49,17 @@ public class ChangePasswordServlet extends HttpServlet {
 
 			 request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);	
 			}
+			if(newPass.length()<6)
+			{
+				
+				request.setAttribute("messages", "The password should be at least 6 digits");
+			
+
+			 request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);	
+			}
 			 if(!newPass.equals(repeat))
 			{
 			
-			  
-				
 			    request.setAttribute("messages", "The new password and the repeat password should be the same");
 				 request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);		
 			}

@@ -10,7 +10,14 @@ import dao.AppDao;
 import model.App;
 import model.Peanut;
 import utils.JdbcUtils;
-
+/**
+ * The implementation AppDao interface which allow user to access the "apps" table
+ * in "jbcy" database and manipulate it.
+ * @author Jingbo Lin
+ * @version %I%, %G%
+ * @since 1.0
+ * @see model.App
+ */
 public class AppDaoImpl implements AppDao {
 
 	@Override

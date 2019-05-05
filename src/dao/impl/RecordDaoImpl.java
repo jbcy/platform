@@ -14,7 +14,14 @@ import model.App;
 import model.Record;
 import utils.GMethod;
 import utils.JdbcUtils;
-
+/**
+ * The implementation RecordDao interface which allow user to access the "records" table
+ * in "jbcy" database and manipulate it.
+ * @author Jingbo Lin
+ * @version %I%, %G%
+ * @since 1.0
+ * @see model.App
+ */
 public class RecordDaoImpl implements RecordDao {
 
 	@Override

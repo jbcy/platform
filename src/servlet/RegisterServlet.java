@@ -2,26 +2,26 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import dao.impl.UserDaoImpl;
-import model.App;
-import model.AppType;
 import model.Peanut;
-import model.Record;
 import model.User;
 import service.TransactionImpl;
-
+/**
+ * @author Claudia Gomez
+ */
 public class RegisterServlet extends HttpServlet {
 	
-    public RegisterServlet() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,9 @@ public class RegisterServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
+	/**
+	 * create a new user and set the peanuts  as well as a session
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		String name=request.getParameter("rname");
@@ -53,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 			TransactionImpl tran= new TransactionImpl();
 			tran.insertPeanut(newUser.getId());
 			
-			//request.getSession(true).setAttribute("user", newUser);
+
 			session.setAttribute("user", newUser);
 			
 			TransactionImpl service = new TransactionImpl();

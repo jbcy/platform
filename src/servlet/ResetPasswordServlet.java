@@ -15,26 +15,25 @@ import service.Mail;
 import utils.GeneratePass;
 
 
-
+/**
+ * @author Claudia Gomez
+ */
 public class ResetPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public ResetPasswordServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 			getServletContext().getRequestDispatcher("/jsp/resetPassword.jsp").include(request, response);
 		
-		
-		
 	}
+    /**
+     * will send an email with the new generated password, verifying that the email provided belongs to a user in the database
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	        
@@ -46,7 +45,7 @@ public class ResetPasswordServlet extends HttpServlet {
 	  	        boolean answer= reset.resetPassword(email, generatedPass);
 	  	       if(answer==true)
 	  	       {
-	  	    	 Mail.send(email, "Reset password", "Hi!  Here is the new passwords, Please change it once you login.  Password: "+ generatedPass);
+	  	    	 Mail.send(email, "Reset password", "Hi!  Here is the new password, Please change it once you login.  Password: "+ generatedPass);
 	  	    	request.setAttribute("messages", "Success! we send an email with your new password.");
 				getServletContext().getRequestDispatcher("/jsp/resetPassword.jsp").include(request, response);
 	  	       }

@@ -14,7 +14,12 @@ import model.App;
 import model.User;
 import model.UserApp;
 import utils.JdbcUtils;
-
+/**
+ * The implementation UserAppDao interface which allow user to access the "users_apps" table
+ * in "jbcy" database and manipulate it.
+ * @author Jingbo Lin
+ *
+ */
 public class UserAppDaoImpl implements UserAppDao {
 
 	@Override

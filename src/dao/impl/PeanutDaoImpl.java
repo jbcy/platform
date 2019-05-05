@@ -10,9 +10,12 @@ import utils.JdbcUtils;
 
 
 /**
- * Manipulation of peanut table
+ * The implementation PeanutDao interface which allow user to access the "peanuts" table
+ * in "jbcy" database and manipulate it.
  * @author Jingbo Lin
- *
+ * @version %I%, %G%
+ * @since 1.0
+ * @see model.App
  */
 public class PeanutDaoImpl implements PeanutDao {
 	

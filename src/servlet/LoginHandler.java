@@ -18,15 +18,17 @@ import model.Peanut;
 import model.Record;
 import model.User;
 import service.TransactionImpl;
-
+/**
+ * @author Claudia Gomez
+ */
 public class LoginHandler extends HttpServlet {
 	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
+ /**
+  * get the email and password and validate them, if they are correct the session is saved
+  * if not returns error messages to the jsp
+  */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String userEmail = request.getParameter("lemail");
@@ -56,6 +58,10 @@ public class LoginHandler extends HttpServlet {
 		
 
 	}
+	/**
+	 * the method ask if there is a session saved  redirect to the home or profile to have access to the apps
+	 * if there is no session then redirects to the index 
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		User user= (User) session.getAttribute("user");

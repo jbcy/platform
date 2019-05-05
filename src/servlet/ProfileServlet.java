@@ -18,23 +18,19 @@ import model.User;
 import service.TransactionImpl;
 
 /**
- * Servlet implementation class ProfileServlet
+ * @author Claudia Gomez
  */
 @WebServlet("/Profile")
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+/**
+ * if there is a session, the data of the user like their apps, peanuts
+ */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session= request.getSession();
 		User user= (User) session.getAttribute("user");
@@ -63,15 +59,8 @@ public class ProfileServlet extends HttpServlet {
 		{
 			getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
 		}
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }
