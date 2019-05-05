@@ -111,7 +111,7 @@
 		        <p><%= temp.get(i).getTime() %></p>
 		      </div>
 		    </div> 
-		<% if (temp.size() > 6 && i <= temp.size() - 7) {
+		<% if (temp.size() >= 6 && i <= temp.size() - 6) {
 			break;
 			}
 		} %>

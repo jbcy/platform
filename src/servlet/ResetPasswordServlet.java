@@ -51,7 +51,7 @@ public class ResetPasswordServlet extends HttpServlet {
 	  	       }
 	  	     else
 		        {
-		        	 request.setAttribute("messages", "There was a problem , please check that your email is correct");
+		        	 request.setAttribute("messages", "There was a problem , please check that your University Email ID is correct");
 				getServletContext().getRequestDispatcher("/jsp/resetPassword.jsp").include(request, response);
 		        }
 	  	       	

@@ -52,7 +52,7 @@ public class LoginHandler extends HttpServlet {
 		else
 		{
 	
-			request.setAttribute("messages", "There was a problem , please check that your email and password are corrects");
+			request.setAttribute("messages", "There was a problem , please check that your University email ID and password are corrects");
 			getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
 		}
 		
