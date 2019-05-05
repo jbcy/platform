@@ -17,7 +17,10 @@ import utils.JdbcUtils;
 public class UserDaoImpl implements UserDao {
 
 	
-	
+	/**
+	 * insert the new user but first check if the email already exist and and if it doesn´t then 
+	 * encrypt the password and save everything in the database
+	 */
 	@Override
 	public String insert(User user) {
 		Statement conne = null;
@@ -60,7 +63,9 @@ public class UserDaoImpl implements UserDao {
 	return "Error";
 	}
 
-
+ /**
+  * find the id of the user by the email
+  */
 	@Override
 	public int findId(String email)
 	{
@@ -88,12 +93,12 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 		return theId;
-	
-
 
 	}
 	
-	
+	/**
+	 * find if the email already exist in the database
+	 */
 	@Override
 	public boolean repeatEmail(String email) {
 		Statement statement = null;
@@ -121,7 +126,11 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	
-	
+	/**
+	 * generate a password using bcrypt
+	 * @param password
+	 * @return
+	 */
 	private String generatePass(String password) 
 	{
 		
@@ -130,7 +139,9 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
-	 
+	 /**
+	  * check that the password corresponds to the one that the email has assigned in the user table
+	  */
 	 @Override
 		public User validate(String password, String email) {
 			Statement statement = null;
@@ -171,7 +182,9 @@ public class UserDaoImpl implements UserDao {
 			return logedUser;
 		}
 	 
-	 
+	 /**
+	  * change password first verifying that the new one is the corresponding in the user table
+	  */
 	 @Override
 		public String updatePassword(String old, String newPass, int id) {
 			Statement conne = null;
@@ -223,6 +236,9 @@ public class UserDaoImpl implements UserDao {
 		return "Error";
 		}
 
+	  /**
+	   * reset the password checking that the email  exists in the db
+	   */
 	 @Override
 		public boolean resetPassword(String email, String generated) {
 			Statement conne = null;
