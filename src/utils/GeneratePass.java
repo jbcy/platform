@@ -1,5 +1,9 @@
 package utils;
-
+/**
+ * Generate a random password of 9 digits 
+ * @author Claudia Gomez
+ *
+ */
 public class GeneratePass {
 	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	public static String generate()

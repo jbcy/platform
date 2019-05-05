@@ -11,7 +11,9 @@ import it.cosenonjaviste.crypto.BCrypt;
 import model.App;
 import model.User;
 import utils.JdbcUtils;
-
+/**
+ * @author Claudia Gomez
+ */
 public class UserDaoImpl implements UserDao {
 
 	

@@ -2,7 +2,9 @@ package dao;
 
 import model.User;
 
-
+/**
+ * @author Claudia Gomez
+ */
 
 public interface UserDao {
 	String insert(User user);
