@@ -24,8 +24,8 @@
   </div>
     <h1 class="w3-text-grey w3-center"><b>Reset Password</b></h1>
     <form class="w3-container" action="resetPass" method="post" >
-	<label>Email</label>
-	<input class="w3-input" type="email" id="email" name="email">
+	<label>University Email ID</label>
+	<input class="w3-input" type="text" id="email" name="email">
 	
 	<div class="w3-center w3-padding-16">
 	<button class="w3-button w3-black w3-center" type="submit" name="btn" value="l">Reset</button>

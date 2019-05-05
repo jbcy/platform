@@ -53,7 +53,7 @@
     <h1 class="w3-text-grey w3-center"><b>Welcome back!</b></h1>
     <form class="w3-container" action="login" method="post" >
 	<label>Email</label>
-	<input class="w3-input" type="email" id="lemail" name="lemail">
+	<input class="w3-input" type="text" id="lemail" name="lemail">
 	
 	<label>Password</label>
 	<input class="w3-input" type="password" id="lpassword" name="lpassword">
@@ -85,8 +85,8 @@
       <form class="w3-padding-16"   action="Register" method="post" onsubmit="return validationR()">
       	<label>Name</label>
 		<input class="w3-input" type="text" name="rname" id="rname">
-		<label>Email</label>
-		<input class="w3-input" type="email" name="remail" id="remail">
+		<label>University email ID</label>
+		<input class="w3-input" type="text" name="remail" id="remail">
 		<label>Password</label>
 		<input class="w3-input" type="password" name="rpassword" id="rpassword">
      	<label>Repeat Password</label>

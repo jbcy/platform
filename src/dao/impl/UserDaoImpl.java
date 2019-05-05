@@ -27,7 +27,7 @@ public class UserDaoImpl implements UserDao {
 		String pass=null;
 		if(repeatEmail(user.getEmail()))
 		{
-			return "Email already exists";
+			return "University Email ID already exists";
 		}
 		
 		 pass=generatePass(user.getPassword());

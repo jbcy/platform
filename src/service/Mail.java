@@ -30,7 +30,7 @@ Session session = Session.getDefaultInstance(props,
 try {  
  MimeMessage message = new MimeMessage(session);  
  message.setFrom(new InternetAddress(user));  
- message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+ message.addRecipient(Message.RecipientType.TO,new InternetAddress(to+"@sheffield.ac.uk"));  
  message.setSubject(subject);  
  message.setText(msg);  
    
