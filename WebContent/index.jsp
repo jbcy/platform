@@ -52,7 +52,7 @@
   
     <h1 class="w3-text-grey w3-center"><b>Welcome back!</b></h1>
     <form class="w3-container" action="login" method="post" >
-	<label>Email</label>
+	<label>University Email ID</label>
 	<input class="w3-input" type="text" id="lemail" name="lemail">
 	
 	<label>Password</label>
