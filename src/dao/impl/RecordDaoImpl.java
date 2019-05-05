@@ -5,14 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import dao.RecordDao;
-import model.App;
 import model.Record;
-import utils.GMethod;
 import utils.JdbcUtils;
 /**
  * The implementation RecordDao interface which allow user to access the "records" table

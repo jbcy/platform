@@ -74,9 +74,8 @@
   
   
 
-  <div class="w3-black w3-center w3-padding-24 w3-display-bottom">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
-
-  <div class="w3-black w3-center w3-padding-24 footerUpload">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
+  
+  <div class="w3-black w3-center w3-padding-24 footerUpload">Powered by Team 13</div>
 
 
 <!-- End page content -->

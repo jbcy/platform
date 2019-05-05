@@ -15,7 +15,6 @@ import model.Record;
 import model.User;
 import model.UserApp;
 import utils.DaoFactory;
-import utils.GMethod;
 
 /**
  * @author Jingbo Lin

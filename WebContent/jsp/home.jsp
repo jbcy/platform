@@ -154,32 +154,8 @@
     
   </div>
 
-  <!-- Footer -->
-<!-- <footer class="w3-container w3-padding-32 w3-dark-grey">
-	<div class="w3-row-padding">
-	   <div class="w3-third">
-	      <h3>FOOTER</h3>
-	      <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-	      <p>Powered by team 13</p>
-	    </div>
-	    <div class="w3-third">
-	      <h3>Extra Function</h3>
-	      <ul class="w3-ul w3-hoverable">
-	        <li class="w3-padding-16">
-	         <a href="jsp/uploadAppPage.jsp">
-	          <span class="w3-large">Upload your own apps</span><br>
-	          <span>Upload your own apps to gain more peanut points</span></a>
-	        </li>
-	        <li class="w3-padding-16">
-	          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
-	          <span class="w3-large">Ipsum</span><br>
-	          <span>Praes tinci sed</span>
-	        </li> 
-	      </ul>
-	    </div>
-	</div>
-</footer> -->
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">team 13</a></div>
+
+  <div class="w3-black w3-center w3-padding-24">Powered by Team 13</div>
 </div>
 
 <script>

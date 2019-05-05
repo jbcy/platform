@@ -1,6 +1,4 @@
 package dao.impl;
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,7 +6,6 @@ import java.sql.Statement;
 
 import dao.UserDao;
 import it.cosenonjaviste.crypto.BCrypt;
-import model.App;
 import model.User;
 import utils.JdbcUtils;
 /**

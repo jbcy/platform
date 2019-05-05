@@ -2,7 +2,6 @@ package model;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 public class AppType {
 
