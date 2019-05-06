@@ -66,19 +66,20 @@ public class UserDaoImpl implements UserDao {
 	}
 
  /**
-  * find the id of the user by the email
+  * find user by the email
   */
 	@Override
-	public int findId(String email)
+	public User findByEmail(String email)
 	{
 		Statement statement = null;
-		 int theId=0;
+		User user = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT id FROM users WHERE email = '" + email +"'");
+			ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE email = '" + email +"'");
 			while(rs.next()) 
 			{
-				theId=rs.getInt(1);
+				user = new User(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5));
+				
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -94,7 +95,7 @@ public class UserDaoImpl implements UserDao {
 				}
 			}
 		}
-		return theId;
+		return user;
 
 	}
 	

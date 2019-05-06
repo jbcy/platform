@@ -51,7 +51,8 @@ public class RegisterServlet extends HttpServlet {
 		String answer= registerUser.insert(newUser);
 		if(answer.equals("Success"))
 		{
-			newUser.setId(registerUser.findId(email));
+			newUser = registerUser.findByEmail(email);
+			
 			TransactionImpl tran= new TransactionImpl();
 			tran.insertPeanut(newUser.getId());
 			

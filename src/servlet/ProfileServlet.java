@@ -41,7 +41,7 @@ public class ProfileServlet extends HttpServlet {
 		session.setAttribute("peanut", peanut);
 		
 		AppType apps = new AppType();
-		apps.setAll(service.findAllApp());
+		apps.setAll(service.findPublished());
 		apps.setJoined(service.findUserApps(user.getId()));
 		List<App> newForMe = service.remove(apps.getAll(), apps.getJoined());
 		

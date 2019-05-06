@@ -69,9 +69,23 @@ public class TransactionImpl implements Transaction {
 	}
 
 	@Override
-	public List<App> findAllApp() {
-		return appDao.findAll();
+	public List<App> findPublished() {
+		return appDao.findPublished();
 	}
+	
+	@Override
+	public List<App> checkApps() {
+		
+		return appDao.checkApps();
+	}
+
+
+	@Override
+	public List<App> wrongApps() {
+		
+		return appDao.wrongApps();
+	}
+
 
 	@Override
 	public List<Record> findRecordByTime(int userId, Date startDate, Date endDate) {
@@ -121,6 +135,13 @@ public class TransactionImpl implements Transaction {
 	}
 
 	@Override
+	public void updateAppStatus(int id) {
+		appDao.updateStatus(id);
+		
+	}
+	
+	
+	@Override
 	public void updateRecord(Record record) {
 		
 		
@@ -141,6 +162,18 @@ public class TransactionImpl implements Transaction {
 		}
 		return temp;
 	}
+
+
+	
+
+	@Override
+	public void deleteApp(int id) {
+		appDao.delete(id);
+		
+	}
+
+
+	
 
 
 	

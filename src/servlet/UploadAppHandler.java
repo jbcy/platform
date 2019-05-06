@@ -71,7 +71,7 @@ public class UploadAppHandler extends HttpServlet {
 				 
 			}
 			TransactionImpl tran = new TransactionImpl();
-			tran.insertApp(new App(((User) session.getAttribute("user")).getId(), name, description, 0, points));
+			tran.insertApp(new App(((User) session.getAttribute("user")).getId(), name, description, 0, points, 1));
 			tran.insertRecord(new Record(((User) session.getAttribute("user")).getId(), "General", "Upload a new app: " + name, new Date()));
 			session.removeAttribute("status");
 			getServletContext().getRequestDispatcher("/jsp/status.jsp").include(request, response);

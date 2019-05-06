@@ -27,10 +27,12 @@
   </div>
   <div class="w3-bar-block">
     <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-home fa-fw w3-margin-right"></i>Home</a> 
-    <a href="#memory" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Memory</a> 
+    <a href="#memory" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Profile</a> 
     <a href="jsp/uploadAppPage.jsp" class="w3-bar-item w3-button w3-padding"><i class="fa fa-star fa-fw w3-margin-right"></i>Upload</a>
+    <% if (user.getRole() == 1) {%> 
+    <a href="jsp/admin.jsp" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-stack fa-fw w3-margin-right"></i>Check</a> 
+    <% }%>
     <a href="${pageContext.request.servletContext.contextPath}/logout" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Log out</a>
-
   </div>
   
 </nav>

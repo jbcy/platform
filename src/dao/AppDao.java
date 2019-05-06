@@ -16,6 +16,11 @@ public interface AppDao {
 	void insert(App app);
 	App findByName(String name);
 	App findById(int id);
-	List<App> findAll();
+	List<App> findPublished();
+	List<App> checkApps();
+	List<App> wrongApps();
 	void update(int id);
+	void updateStatus(int id);
+	void delete(int id);
+	
 }

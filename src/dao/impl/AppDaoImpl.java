@@ -29,12 +29,13 @@ public class AppDaoImpl implements AppDao {
 		Statement statement = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			String sql = "INSERT INTO apps (id, owner_id, name, description, users, points) VALUES (null, "
+			String sql = "INSERT INTO apps (id, owner_id, name, description, users, points, status) VALUES (null, "
 					+ app.getOwnerId() + ", '" 
 					+ app.getName() + "', '"
 					+ app.getDescription() + "', "
 					+ app.getUsers() + ", "
-					+ app.getPoints() + ")";
+					+ app.getPoints() + ", "
+					+ app.getStatus() + ")";
 			int result = statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,7 +69,7 @@ public class AppDaoImpl implements AppDao {
 			statement = JdbcUtils.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE name = '" + name +"'");
 			while(rs.next()) {
-				app = new App(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+				app = new App(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -88,19 +89,19 @@ public class AppDaoImpl implements AppDao {
 	}
 
 	/**
-	 * Retrieve all app data from database 
+	 * Retrieve all published apps data from database 
 	 * @return 		if there are already some apps in the database then return a list 
 	 * 				apps instance otherwise return null
 	 * @see model.App
 	 * @since 1.0
 	 */
 	@Override
-	public List<App> findAll() {
+	public List<App> findPublished() {
 		Statement statement = null;
 		List<App> result = null;
 		try {
 			statement = JdbcUtils.getConnection().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM apps");
+			ResultSet rs = statement.executeQuery("SELECT * FROM apps where status = 0");
 //			int column = rs.getMetaData().getColumnCount();
 			result = new ArrayList<>();
 			while (rs.next()) {
@@ -130,6 +131,92 @@ public class AppDaoImpl implements AppDao {
 		return result;
 	}
 
+	/**
+	 * Retrieve all apps data that need to be checked from database 
+	 * @return 		if there are already some apps in the database then return a list 
+	 * 				apps instance otherwise return null
+	 * @see model.App
+	 * @since 1.0
+	 */
+	@Override
+	public List<App> checkApps() {
+		Statement statement = null;
+		List<App> result = null;
+		try {
+			statement = JdbcUtils.getConnection().createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM apps where status = 1");
+//			int column = rs.getMetaData().getColumnCount();
+			result = new ArrayList<>();
+			while (rs.next()) {
+				App temp = new App();
+				temp.setId(rs.getInt(1));
+				temp.setOwnerId(rs.getInt(2));
+				temp.setName(rs.getString(3));
+				temp.setDescription(rs.getString(4));
+				temp.setUsers(rs.getInt(5));
+				temp.setPoints(rs.getInt(6));
+				result.add(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Retrieve all apps data that cannot be published from database 
+	 * @return 		if there are already some apps in the database then return a list 
+	 * 				apps instance otherwise return null
+	 * @see model.App
+	 * @since 1.0
+	 */
+	@Override
+	public List<App> wrongApps() {
+		Statement statement = null;
+		List<App> result = null;
+		try {
+			statement = JdbcUtils.getConnection().createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM apps where status = 2");
+//			int column = rs.getMetaData().getColumnCount();
+			result = new ArrayList<>();
+			while (rs.next()) {
+				App temp = new App();
+				temp.setId(rs.getInt(1));
+				temp.setOwnerId(rs.getInt(2));
+				temp.setName(rs.getString(3));
+				temp.setDescription(rs.getString(4));
+				temp.setUsers(rs.getInt(5));
+				temp.setPoints(rs.getInt(6));
+				result.add(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
+	
 	/**
 	 * update specific app data from database by its id
 	 * @param id 	an integer that represent app's id
@@ -178,7 +265,7 @@ public class AppDaoImpl implements AppDao {
 			statement = JdbcUtils.getConnection().createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM apps WHERE id = " + id);
 			while(rs.next()) {
-				app = new App(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+				app = new App(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -197,4 +284,58 @@ public class AppDaoImpl implements AppDao {
 		return app;
 	}
 
+	
+	@Override
+	public void updateStatus(int id) {
+		Statement statement = null;
+		try {
+			statement = JdbcUtils.getConnection().createStatement();
+			int result = statement.executeUpdate("UPDATE apps SET status = 0" 
+			 + " WHERE id = " 
+					+ id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+	
+	
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		Statement statement = null;
+		try {
+			statement = JdbcUtils.getConnection().createStatement();
+			statement.executeUpdate("DELETE FROM apps WHERE id =" + id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+
+	
+
+	
+	
 }

@@ -1,52 +1,60 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * The entity to store app's data
  * @author Jingbo Lin
  * @version %I%, %G%
  * @since 1.0
  */
-public class App {
+public class App implements Serializable{
+	
 	private int id;
 	private int ownerId;
 	private String name;
 	private String description;
 	private int users = 0;
 	private int points;
+	private int status;
 	
 	
 	public App() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	/**
-	 * constructor of App entity
+	 * Constructor
 	 * @param ownerId
 	 * @param name
 	 * @param description
 	 * @param users
 	 * @param points
+	 * @param status
 	 */
-	public App(int ownerId, String name, String description, int users, int points) {
+	public App(int ownerId, String name, String description, int users, int points, int status) {
 		super();
 		this.ownerId = ownerId;
 		this.name = name;
 		this.description = description;
 		this.users = users;
 		this.points = points;
+		this.status = status;
 	}
-
+	
 	/**
-	 * constructor of App entity
+	 * Constructor
 	 * @param id
 	 * @param ownerId
 	 * @param name
 	 * @param description
 	 * @param users
 	 * @param points
+	 * @param status
 	 */
-	public App(int id, int ownerId, String name, String description, int users, int points) {
+	public App(int id, int ownerId, String name, String description, int users, int points, int status) {
 		super();
 		this.id = id;
 		this.ownerId = ownerId;
@@ -54,12 +62,10 @@ public class App {
 		this.description = description;
 		this.users = users;
 		this.points = points;
+		this.status = status;
 	}
 
-	/**
-	 * get function for app id
-	 * @return
-	 */
+
 	public int getId() {
 		return id;
 	}
@@ -122,6 +128,17 @@ public class App {
 	public void setPoints(int points) {
 		this.points = points;
 	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
 	
 	
 	

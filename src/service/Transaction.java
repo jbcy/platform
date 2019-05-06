@@ -19,7 +19,9 @@ public interface Transaction {
 	Peanut findPeanut(int userId);
 	App findAppByName(String name);
 	App findAppById(int id);
-	List<App> findAllApp();
+	List<App> findPublished();
+	List<App> checkApps();
+	List<App> wrongApps();
 	List<Record> findRecordByTime(int userId, Date startDate, Date endDate);
 	List<Record> findRecordByType(int userId, String type);
 	List<Record> findAllRecord(int userId);
@@ -28,6 +30,8 @@ public interface Transaction {
 	
 	void updatePeanut(Peanut peanut);
 	void updateApp(int id);
+	void updateAppStatus(int id);
 	void updateRecord(Record record);
 	
+	void deleteApp(int id);
 }

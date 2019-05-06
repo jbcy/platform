@@ -86,11 +86,20 @@ version="3.1">
     <url-pattern>/appSelection</url-pattern>
   </servlet-mapping>
    <servlet>
-   <servlet-name>ResetPasswordServlet</servlet-name>
+  <servlet-name>ResetPasswordServlet</servlet-name>
     <servlet-class>servlet.ResetPasswordServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ResetPasswordServlet</servlet-name>
     <url-pattern>/resetPass</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>AppChecker</servlet-name>
+    <servlet-class>servlet.AppChecker</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppChecker</servlet-name>
+    <url-pattern>/check</url-pattern>
   </servlet-mapping>
 </web-app>

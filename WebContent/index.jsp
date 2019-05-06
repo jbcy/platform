@@ -44,8 +44,13 @@
      <%@ page import="service.TransactionImpl" %>
     <% 
     	AppType apps = new AppType();
-    	apps.setAll(new TransactionImpl().findAllApp());
-    	List<App> list = apps.getAll();
+	    List<App> list = null;
+		list = new TransactionImpl().findPublished();
+    	if (list != null) {
+    		
+    	
+    	apps.setAll(list);
+    	
     	
     	for (App item : list) {
     %>
@@ -57,7 +62,7 @@
 		        <p><%= item.getDescription() %></p>
 		      </div>
 		    </div> 
-		<% } %>
+		<% }} %>
     
     
     
