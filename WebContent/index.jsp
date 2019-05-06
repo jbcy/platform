@@ -37,6 +37,33 @@
     </p><br>
 		
  
+ <div class="w3-row-padding">
+  <%@ page import="java.util.List" %>
+    <%@ page import="model.App" %>
+     <%@ page import="model.AppType" %>
+     <%@ page import="service.TransactionImpl" %>
+    <% 
+    	AppType apps = new AppType();
+    	apps.setAll(new TransactionImpl().findAllApp());
+    	List<App> list = apps.getAll();
+    	
+    	for (App item : list) {
+    %>
+    	
+    	<div class="w3-third w3-container w3-margin-bottom" >
+		      
+		      <div class="w3-container w3-white">
+		        <p><b><%= item.getName() %> (<%= item.getPoints() %>)</b></p>
+		        <p><%= item.getDescription() %></p>
+		      </div>
+		    </div> 
+		<% } %>
+    
+    
+    
+  </div>
+ 
+ 
   </div>
 </div>
 
@@ -106,7 +133,19 @@
     </div>
   </div>
 </div>
+<script>
+// Script to open and close sidebar
 
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-48">
   <p>Powered by team 13</p>

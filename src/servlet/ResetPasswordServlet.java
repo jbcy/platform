@@ -47,7 +47,7 @@ public class ResetPasswordServlet extends HttpServlet {
 	  	       {
 	  	    	 Mail.send(email, "Reset password", "Hi!  Here is the new password, Please change it once you login.  Password: "+ generatedPass);
 	  	    	request.setAttribute("messages", "Success! we send an email with your new password.");
-				getServletContext().getRequestDispatcher("/jsp/resetPassword.jsp").include(request, response);
+	  	    	getServletContext().getRequestDispatcher("/jsp/resetPassword.jsp").include(request, response);
 	  	       }
 	  	     else
 		        {

@@ -16,7 +16,7 @@
 <div class="w3-container w3-padding-64 w3-light-gray w3-grayscale-min  " id="login">
 <div class="w3-panel w3-pale-yellow w3-display-container w3-border">
 
-  <span>${messages}</span>
+  <span id="messageSpan">${messages}</span>
 </div>
 
   <div class="w3-content">
@@ -45,7 +45,7 @@
 </footer>
 <div class="w3-hide-small" style="margin-bottom:32px"></div>
 
-<script src="./js/register.js"></script>
+<script src="./js/resetPassword.js"></script>
 
 </body>
 </html>
